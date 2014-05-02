@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-@class beaconDetection;
+#import <CoreLocation/CoreLocation.h>
+#import "bleepManager.h"
 
-@interface MasterViewController : UITableViewController {
-    NSArray *beacons;
-}
-    
+#define k_UUID @"3AE96580-33DB-458B-8024-2B3C63E0E920"
 
-@property (nonatomic, assign) NSArray *beacons;
+
+@interface MasterViewController : UITableViewController <CLLocationManagerDelegate, bleepManagerDelegate>    
+
+//@property (nonatomic, assign) NSMutableArray *foundBeacons;
+@property(nonatomic, strong) CLLocationManager *locationManager;
 @end

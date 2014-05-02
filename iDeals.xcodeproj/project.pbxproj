@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F69212F19142BD2006F3D5E /* StoreDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F69212E19142BD2006F3D5E /* StoreDetail.m */; };
 		E7A8F24319136AD3003E9A05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24219136AD3003E9A05 /* CoreLocation.framework */; };
 		E7A8F24D19136FA9003E9A05 /* bleepManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24819136FA9003E9A05 /* bleepManager.a */; };
 		E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8F25019137734003E9A05 /* beaconDetection.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F69212D19142BD2006F3D5E /* StoreDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetail.h; sourceTree = "<group>"; };
+		3F69212E19142BD2006F3D5E /* StoreDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetail.m; sourceTree = "<group>"; };
 		E7A8F24219136AD3003E9A05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E7A8F24819136FA9003E9A05 /* bleepManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = bleepManager.a; sourceTree = "<group>"; };
 		E7A8F24B19136FA9003E9A05 /* bleepBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bleepBeacon.h; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				EB96FCD119120D2F00AE4681 /* DetailViewController.m */,
 				EB96FCD319120D2F00AE4681 /* Images.xcassets */,
 				EB96FCBF19120D2F00AE4681 /* Supporting Files */,
+				3F69212D19142BD2006F3D5E /* StoreDetail.h */,
+				3F69212E19142BD2006F3D5E /* StoreDetail.m */,
 			);
 			path = iDeals;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F69212F19142BD2006F3D5E /* StoreDetail.m in Sources */,
 				E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */,
 				EB96FCC919120D2F00AE4681 /* AppDelegate.m in Sources */,
 				EB96FCCF19120D2F00AE4681 /* MasterViewController.m in Sources */,
@@ -435,7 +441,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDeals/iDeals-Prefix.pch";
 				INFOPLIST_FILE = "iDeals/iDeals-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/student1/Documents/A0119930/iDeals/bleepManager,
@@ -454,7 +460,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDeals/iDeals-Prefix.pch";
 				INFOPLIST_FILE = "iDeals/iDeals-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/student1/Documents/A0119930/iDeals/bleepManager,

@@ -11,7 +11,7 @@
 #import "DetailViewController.h"
 #import "bleepManager.h"
 #import "bleepBeacon.h"
-
+#import "StoreDetail.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -20,13 +20,14 @@
 @end
 
 @implementation MasterViewController
-@synthesize locationManager;
+@synthesize locationManager,storeDetailList;
 
 - (void)awakeFromNib
 {
     
     [super awakeFromNib];
     foundBeacons = [[NSMutableArray alloc] init];
+    storeDetailList = [[NSMutableArray alloc] init];
     
 }
 
@@ -35,7 +36,7 @@
   
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     //self.navigationItem.rightBarButtonItem = addButton;
@@ -64,7 +65,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
+/*- (void)insertNewObject:(id)sender
 {
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
@@ -72,7 +73,7 @@
     [_objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
+}*/
 
 #pragma mark - Table View
 
@@ -83,7 +84,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return foundBeacons.count;
+    return storeDetailList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,15 +93,15 @@
 
     //NSString *object = foundBeacons[indexPath.row];
     //cell.textLabel.text = object;
-    
-    [[cell textLabel] setText:[[[foundBeacons objectAtIndex:[indexPath row]] proximityUUID] UUIDString]];
+    StoreDetail *s=[storeDetailList objectAtIndex:[indexPath row]];
+    [[cell textLabel] setText:[s.storeName stringByAppendingString:[@" - " stringByAppendingString:s.address]]];
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -164,10 +165,23 @@
        // [foundBeacons addObject:beacon];
         NSLog(@"%d",[foundBeacons count]);
 		NSLog(@"%@", detectedNumbers);
-        [foundBeacons insertObject:beacon atIndex:0];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-
+       
+        BOOL exist=false;
+        for(bleepBeacon *b in foundBeacons)
+        {
+            if([b.proximityUUID.UUIDString isEqualToString:beacon.proximityUUID.UUIDString ])
+            {
+                exist=true;
+                break;
+            }
+        }
+        if(!exist)
+        {
+            [foundBeacons insertObject:beacon atIndex:0];
+          //   NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+          //  [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self fetchStoreDetail];
+        }
         //textView.text  = [detectedNumbers stringByAppendingString:textView.text];
         
 		//UILocalNotification *notification = [[UILocalNotification alloc] init];
@@ -231,6 +245,39 @@
 	NSLog(@"bleep! Stop monitoring");
     //textView.text  = [@"bleep! Stop monitoring\n" stringByAppendingString:textView.text];
     
+}
+
+
+/* Web Service Request for store details*/
+- (void)fetchStoreDetail;
+{
+    NSURL *url = [NSURL URLWithString:@"http://apex.oracle.com/pls/apex/viczsaurav/iDeals/store/3AE96580-33DB-458B-8024-2B3C63E0E920"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data, NSError *connectionError)
+     {
+         if (data.length > 0 && connectionError == nil)
+         {
+             NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:0
+                                                                        error:NULL];
+             NSArray *storeDetails = results[@"items"] ;
+             NSDictionary *dictionary = [storeDetails objectAtIndex:0];
+            
+             StoreDetail *s=[[StoreDetail alloc] init];
+             s.storeName=[dictionary objectForKey:@"store_name"];
+             s.address=[dictionary objectForKey:@"address"];
+             NSLog(@"Store Name : %@",s.storeName);
+             
+             [storeDetailList insertObject:s atIndex:0];
+             
+             
+             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+             [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+         }
+     }];
 }
 
 

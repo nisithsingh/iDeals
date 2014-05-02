@@ -17,4 +17,5 @@
 
 //@property (nonatomic, assign) NSMutableArray *foundBeacons;
 @property(nonatomic, strong) CLLocationManager *locationManager;
+@property(nonatomic,strong) NSMutableArray *storeDetailList;
 @end

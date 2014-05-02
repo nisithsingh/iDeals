@@ -12,7 +12,7 @@
 
 @class bleepBeacon;
 
-@interface bleepBeacon : NSObject
+@interface bleepBeacon : NSObject 
 
 /*
  *  proximityUUID

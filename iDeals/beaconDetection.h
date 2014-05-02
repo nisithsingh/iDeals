@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#import "bleepManager.h"
 
-@interface beaconDetection : NSObject
+@interface beaconDetection : NSObject <CLLocationManagerDelegate, bleepManagerDelegate>
+
+@property(nonatomic, strong) CLLocationManager *locationManager;
+
++ (NSArray *) getExistingBeacons;
+
 
 @end

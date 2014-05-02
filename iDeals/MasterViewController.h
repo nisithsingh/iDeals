@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class beaconDetection;
 
-@interface MasterViewController : UITableViewController
+@interface MasterViewController : UITableViewController {
+    NSArray *beacons;
+}
+    
 
+@property (nonatomic, assign) NSArray *beacons;
 @end

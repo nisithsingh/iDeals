@@ -9,6 +9,8 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
+#import "beaconDetection.h"
+
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -16,10 +18,12 @@
 @end
 
 @implementation MasterViewController
+@synthesize beacons;
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    beacons = [];
 }
 
 - (void)viewDidLoad

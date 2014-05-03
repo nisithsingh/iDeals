@@ -10,6 +10,9 @@
 		3F69212F19142BD2006F3D5E /* StoreDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F69212E19142BD2006F3D5E /* StoreDetail.m */; };
 		E7224945191543C3008FB9DF /* PromotionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7224944191543C3008FB9DF /* PromotionsViewController.m */; };
 		E72249481915496D008FB9DF /* PromotionDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = E72249471915496D008FB9DF /* PromotionDetail.m */; };
+		E722498F19158E2F008FB9DF /* ReachabilityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E722498E19158E2F008FB9DF /* ReachabilityModel.m */; };
+		E722499119158E5C008FB9DF /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E722499019158E5C008FB9DF /* CoreBluetooth.framework */; };
+		E722499419158EA2008FB9DF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E722499319158EA2008FB9DF /* Reachability.m */; };
 		E7A8F24319136AD3003E9A05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24219136AD3003E9A05 /* CoreLocation.framework */; };
 		E7A8F24D19136FA9003E9A05 /* bleepManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24819136FA9003E9A05 /* bleepManager.a */; };
 		E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8F25019137734003E9A05 /* beaconDetection.m */; };
@@ -47,6 +50,11 @@
 		E7224944191543C3008FB9DF /* PromotionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionsViewController.m; sourceTree = "<group>"; };
 		E72249461915496D008FB9DF /* PromotionDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionDetail.h; sourceTree = "<group>"; };
 		E72249471915496D008FB9DF /* PromotionDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionDetail.m; sourceTree = "<group>"; };
+		E722498D19158E2F008FB9DF /* ReachabilityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReachabilityModel.h; path = iDeals/ReachabilityModel.h; sourceTree = "<group>"; };
+		E722498E19158E2F008FB9DF /* ReachabilityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReachabilityModel.m; path = iDeals/ReachabilityModel.m; sourceTree = "<group>"; };
+		E722499019158E5C008FB9DF /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		E722499219158EA2008FB9DF /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = SOURCE_ROOT; };
+		E722499319158EA2008FB9DF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = SOURCE_ROOT; };
 		E7A8F24219136AD3003E9A05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E7A8F24819136FA9003E9A05 /* bleepManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = bleepManager.a; sourceTree = "<group>"; };
 		E7A8F24B19136FA9003E9A05 /* bleepBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bleepBeacon.h; sourceTree = "<group>"; };
@@ -81,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E722499119158E5C008FB9DF /* CoreBluetooth.framework in Frameworks */,
 				E7A8F24D19136FA9003E9A05 /* bleepManager.a in Frameworks */,
 				E7A8F24319136AD3003E9A05 /* CoreLocation.framework in Frameworks */,
 				EB96FCBB19120D2F00AE4681 /* CoreGraphics.framework in Frameworks */,
@@ -105,6 +114,8 @@
 		E7A8F24719136FA9003E9A05 /* bleepManager */ = {
 			isa = PBXGroup;
 			children = (
+				E722499219158EA2008FB9DF /* Reachability.h */,
+				E722499319158EA2008FB9DF /* Reachability.m */,
 				E7A8F24819136FA9003E9A05 /* bleepManager.a */,
 				E7A8F24919136FA9003E9A05 /* include */,
 			);
@@ -138,6 +149,8 @@
 		EB96FCAC19120D2E00AE4681 = {
 			isa = PBXGroup;
 			children = (
+				E722498D19158E2F008FB9DF /* ReachabilityModel.h */,
+				E722498E19158E2F008FB9DF /* ReachabilityModel.m */,
 				E7A8F24719136FA9003E9A05 /* bleepManager */,
 				EB96FCBE19120D2F00AE4681 /* iDeals */,
 				EB96FCE019120D3000AE4681 /* iDealsTests */,
@@ -158,6 +171,7 @@
 		EB96FCB719120D2F00AE4681 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E722499019158E5C008FB9DF /* CoreBluetooth.framework */,
 				E7A8F24219136AD3003E9A05 /* CoreLocation.framework */,
 				EB96FCB819120D2F00AE4681 /* Foundation.framework */,
 				EB96FCBA19120D2F00AE4681 /* CoreGraphics.framework */,
@@ -322,10 +336,12 @@
 				E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */,
 				EB96FCC919120D2F00AE4681 /* AppDelegate.m in Sources */,
 				EB96FCCF19120D2F00AE4681 /* MasterViewController.m in Sources */,
+				E722499419158EA2008FB9DF /* Reachability.m in Sources */,
 				EB96FCC519120D2F00AE4681 /* main.m in Sources */,
 				E7224945191543C3008FB9DF /* PromotionsViewController.m in Sources */,
 				E72249481915496D008FB9DF /* PromotionDetail.m in Sources */,
 				EB96FCD219120D2F00AE4681 /* DetailViewController.m in Sources */,
+				E722498F19158E2F008FB9DF /* ReachabilityModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

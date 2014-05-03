@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 #import "Reachability.h"
 
 
-@interface ReachabilityModel : NSObject{
+@interface ReachabilityModel : NSObject <CBCentralManagerDelegate>{
     
 }
 
@@ -18,6 +19,7 @@
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;
 @property (nonatomic) Reachability *wifiReachability;
+@property (nonatomic, strong) CBCentralManager* bluetoothManager;
 
 -(BOOL) isReachable;
 

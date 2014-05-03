@@ -11,7 +11,7 @@
 #import "Reachability.h"
 
 @implementation ReachabilityModel
-@synthesize status;
+@synthesize status,bluetoothManager,hostReachability,internetReachability,wifiReachability;
 
 extern NSString* const iDealsBaseURL = @"http://apex.oracle.com/pls/apex/viczsaurav/iDeals/";
 
@@ -20,6 +20,7 @@ extern NSString* const iDealsBaseURL = @"http://apex.oracle.com/pls/apex/viczsau
  */
 -(BOOL) isReachable {
     status = NO;
+    [self detectBluetooth];
     [self checkUrlRechability];
     /*
      Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the method reachabilityChanged will be called.
@@ -116,6 +117,41 @@ extern NSString* const iDealsBaseURL = @"http://apex.oracle.com/pls/apex/viczsau
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
+}
+
+
+/*!
+ * Checking for Bluetooth connectivity.
+ */
+- (void)detectBluetooth
+{
+    if(!self.bluetoothManager)
+    {
+        // Put on main queue so we can call UIAlertView from delegate callbacks.
+        self.bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue()];
+    }
+    [self centralManagerDidUpdateState:self.bluetoothManager]; // Show initial state
+}
+
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central
+{
+    NSString *stateString = nil;
+    switch(bluetoothManager.state)
+    {
+        case CBCentralManagerStateUnsupported: stateString = @"The platform doesn't support Bluetooth Low Energy."; break;
+        case CBCentralManagerStateUnauthorized: stateString = @"The app is not authorized to use Bluetooth Low Energy."; break;
+        case CBCentralManagerStatePoweredOff: stateString = @"Bluetooth is currently powered off."; break;
+        case CBCentralManagerStatePoweredOn: stateString = @"Bluetooth is currently powered on and available to use."; break;
+        default: stateString = @"Please check bluetooth connection."; break;
+    }
+    //NSLog(@"%@",stateString);
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Alert"
+                          message:stateString
+                          delegate:self
+                          cancelButtonTitle:@"Ok"
+                          otherButtonTitles:nil];
+     [alert show];
 }
 
 @end

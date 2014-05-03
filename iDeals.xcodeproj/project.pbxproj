@@ -11,6 +11,8 @@
 		E7A8F24319136AD3003E9A05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24219136AD3003E9A05 /* CoreLocation.framework */; };
 		E7A8F24D19136FA9003E9A05 /* bleepManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24819136FA9003E9A05 /* bleepManager.a */; };
 		E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8F25019137734003E9A05 /* beaconDetection.m */; };
+		E7D0DF3E1914985700508510 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D0DF3D1914985700508510 /* Reachability.m */; };
+		E7D0DF4119149B8600508510 /* ReachabilityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D0DF4019149B8600508510 /* ReachabilityModel.m */; };
 		EB96FCB919120D2F00AE4681 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCB819120D2F00AE4681 /* Foundation.framework */; };
 		EB96FCBB19120D2F00AE4681 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCBA19120D2F00AE4681 /* CoreGraphics.framework */; };
 		EB96FCBD19120D2F00AE4681 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCBC19120D2F00AE4681 /* UIKit.framework */; };
@@ -47,6 +49,10 @@
 		E7A8F24C19136FA9003E9A05 /* bleepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bleepManager.h; sourceTree = "<group>"; };
 		E7A8F24F19137734003E9A05 /* beaconDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beaconDetection.h; sourceTree = "<group>"; };
 		E7A8F25019137734003E9A05 /* beaconDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beaconDetection.m; sourceTree = "<group>"; };
+		E7D0DF3C1914985600508510 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../Reachability.h; sourceTree = "<group>"; };
+		E7D0DF3D1914985700508510 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../Reachability.m; sourceTree = "<group>"; };
+		E7D0DF3F19149B8600508510 /* ReachabilityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityModel.h; sourceTree = "<group>"; };
+		E7D0DF4019149B8600508510 /* ReachabilityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityModel.m; sourceTree = "<group>"; };
 		EB96FCB519120D2F00AE4681 /* iDeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB96FCB819120D2F00AE4681 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EB96FCBA19120D2F00AE4681 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -174,10 +180,12 @@
 				E7A8F25019137734003E9A05 /* beaconDetection.m */,
 				EB96FCD019120D2F00AE4681 /* DetailViewController.h */,
 				EB96FCD119120D2F00AE4681 /* DetailViewController.m */,
-				EB96FCD319120D2F00AE4681 /* Images.xcassets */,
-				EB96FCBF19120D2F00AE4681 /* Supporting Files */,
+				E7D0DF3F19149B8600508510 /* ReachabilityModel.h */,
+				E7D0DF4019149B8600508510 /* ReachabilityModel.m */,
 				3F69212D19142BD2006F3D5E /* StoreDetail.h */,
 				3F69212E19142BD2006F3D5E /* StoreDetail.m */,
+				EB96FCD319120D2F00AE4681 /* Images.xcassets */,
+				EB96FCBF19120D2F00AE4681 /* Supporting Files */,
 			);
 			path = iDeals;
 			sourceTree = "<group>";
@@ -185,6 +193,8 @@
 		EB96FCBF19120D2F00AE4681 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E7D0DF3D1914985700508510 /* Reachability.m */,
+				E7D0DF3C1914985600508510 /* Reachability.h */,
 				EB96FCC019120D2F00AE4681 /* iDeals-Info.plist */,
 				EB96FCC119120D2F00AE4681 /* InfoPlist.strings */,
 				EB96FCC419120D2F00AE4681 /* main.m */,
@@ -308,9 +318,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7D0DF4119149B8600508510 /* ReachabilityModel.m in Sources */,
 				3F69212F19142BD2006F3D5E /* StoreDetail.m in Sources */,
 				E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */,
 				EB96FCC919120D2F00AE4681 /* AppDelegate.m in Sources */,
+				E7D0DF3E1914985700508510 /* Reachability.m in Sources */,
 				EB96FCCF19120D2F00AE4681 /* MasterViewController.m in Sources */,
 				EB96FCC519120D2F00AE4681 /* main.m in Sources */,
 				EB96FCD219120D2F00AE4681 /* DetailViewController.m in Sources */,

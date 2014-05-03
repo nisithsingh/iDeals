@@ -12,6 +12,7 @@
 #import "bleepManager.h"
 #import "bleepBeacon.h"
 #import "StoreDetail.h"
+#import "PromotionsViewController.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -50,6 +51,12 @@
     [[bleepManager sharedInstance] setDelegate:self];
     [self startTracking:self];
     
+    /* insert defaul test row */
+    StoreDetail *s=[[StoreDetail alloc] init];
+    s.storeName=@"store 1";
+    s.address=@"store address";
+    [self insertRow:s];
+    
 }
 - (void)stopRefresh
 
@@ -84,6 +91,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+   
+    
     return storeDetailList.count;
 }
 
@@ -132,10 +142,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([[segue identifier] isEqualToString:@"promotionSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        //NSDate *object = _objects[indexPath.row];
+        StoreDetail *sd=[storeDetailList objectAtIndex:indexPath.row];
+        [[segue destinationViewController] setStoreDetail:sd];
     }
 }
 
@@ -280,5 +291,18 @@
      }];
 }
 
+-(void) insertRow:(StoreDetail *) s
+{
+   
+    //s.storeName=[dictionary objectForKey:@"store_name"];
+    //s.address=[dictionary objectForKey:@"address"];
+    NSLog(@"Store Name : %@",s.storeName);
+    
+    [storeDetailList insertObject:s atIndex:0];
+    
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 
 @end

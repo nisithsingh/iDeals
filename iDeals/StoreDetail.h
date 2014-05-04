@@ -17,4 +17,5 @@
 @property(nonatomic,retain) NSString *storeAddress;
 @property(nonatomic,retain) NSMutableArray *promotionDetails;
 @property(nonatomic,retain) NSNumber *storePhoneNumber;
+@property (nonatomic,strong) NSString *storeLogo;
 @end

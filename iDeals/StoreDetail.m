@@ -9,7 +9,7 @@
 #import "StoreDetail.h"
 
 @implementation StoreDetail
-@synthesize storeName,storeAddress,storeId,promotionDetails,storePhoneNumber;
+@synthesize storeName,storeAddress,storeId,promotionDetails,storePhoneNumber,storeLogo;
 
 
 

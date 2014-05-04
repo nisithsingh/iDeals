@@ -44,25 +44,16 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     //self.navigationItem.rightBarButtonItem = addButton;
     
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-    [refresh addTarget:self action:@selector(startTracking:)
-    forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refresh;
+    /*  Pull to Refresh  */
     
     [[bleepManager sharedInstance] setDelegate:self];
     [self startTracking:self];
     
     /* insert defaul test row */
     [self fetchStoreDetail:@"3AE96580-33DB-458B-8024-2B3C63E0E920"];
+   
 }
-- (void)stopRefresh
 
-{
-    
-    [self.refreshControl endRefreshing];
-    
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -99,11 +90,17 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    //NSString *object = foundBeacons[indexPath.row];
-    //cell.textLabel.text = object;
+  
     StoreDetail *storeDetail=[storeDetailList objectAtIndex:[indexPath row]];
-    //if(!storeDetail.storeName)
-    [[cell textLabel] setText:[storeDetail.storeName stringByAppendingString:[@" - " stringByAppendingString:storeDetail.storeAddress]]];
+    
+    
+    NSData* imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString: storeDetail.storeLogo]];
+    UIImage* image = [[UIImage alloc] initWithData:imageData];
+    cell.imageView.image =image;
+    cell.textLabel.text=storeDetail.storeName;
+    cell.detailTextLabel.text=[[[storeDetail.storePhoneNumber stringValue] stringByAppendingString:@"\n"] stringByAppendingString:storeDetail.storeAddress];
+    cell.detailTextLabel.numberOfLines=0;
+    cell.textLabel.numberOfLines=0;
     return cell;
 }
 
@@ -188,18 +185,11 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
         if(!exist)
         {
             [foundBeacons insertObject:beacon atIndex:0];
-          //   NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-          //  [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+       
             [self fetchStoreDetail:beacon.proximityUUID.UUIDString];
         }
-        //textView.text  = [detectedNumbers stringByAppendingString:textView.text];
-        
-		//UILocalNotification *notification = [[UILocalNotification alloc] init];
-		//notification.alertBody = detectedNumbers;
-		//[[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-        //[[UIApplication sharedApplication] scheduledLocalNotifications:notification];
-	}
-        [self stopTracking:self];
+    }
+        [[bleepManager sharedInstance] stopBleepDiscovery];
 }
 
 - (void)beaconManager:(bleepManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLBeaconRegion *)region
@@ -246,6 +236,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     [[bleepManager sharedInstance] startBleepDiscoveryForRegion];
 	NSLog(@"bleep! Start monitoring");
     //textView.text  = [[NSString stringWithFormat:@"bleep! Start monitoring: %@\n", udid.text] stringByAppendingString:textView.text];
+   
 }
 
 - (IBAction)stopTracking:(id)sender{
@@ -278,20 +269,23 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
                                                                       options:0
                                                                         error:NULL];
              NSArray *storeDetails = results[@"items"] ;
-             NSDictionary *dictionary = [storeDetails objectAtIndex:0];
-            
-             StoreDetail *storeDetail=[[StoreDetail alloc] init];
-             storeDetail.storeName=[dictionary objectForKey:@"store_name"];
-             storeDetail.storeAddress=[dictionary objectForKey:@"store_address"];
-              storeDetail.storeId=[dictionary objectForKey:@"store_id"];
-              storeDetail.storePhoneNumber=[dictionary objectForKey:@"store_phone"];
-             NSLog(@"Store Name : %@",storeDetail.storeName);
+             for(NSDictionary *storeDictionay in storeDetails)
+             {
+                 
+                 StoreDetail *storeDetail=[[StoreDetail alloc] init];
+                 storeDetail.storeName=[storeDictionay objectForKey:@"store_name"];
+                 storeDetail.storeAddress=[storeDictionay objectForKey:@"store_address"];
+                 storeDetail.storeId=[storeDictionay objectForKey:@"store_id"];
+                 storeDetail.storePhoneNumber=[storeDictionay objectForKey:@"store_phone"];
+                 storeDetail.storeLogo=[storeDictionay objectForKey:@"store_logo"];
+                 NSLog(@"Store Name : %@",storeDetail.storeName);
              
-             [storeDetailList insertObject:storeDetail atIndex:0];
+                 [storeDetailList insertObject:storeDetail atIndex:0];
              
              
-             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-             [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                 [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+             }
          }
      }];
 }

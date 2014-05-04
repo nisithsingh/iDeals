@@ -39,6 +39,8 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
     self.preferredContentSize = CGSizeMake(320.0, 600.0);
     
     [super awakeFromNib];
+    
+   
 }
 
 - (void)viewDidLoad
@@ -57,12 +59,28 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
     //self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-     //clear table
-    [storeDetail.promotionDetails removeAllObjects];
-    [self.tableView reloadData];
+ 
     
     [self fetchPromotionDetail:storeDetail.storeId];
     
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    
+    [refresh addTarget:self action:@selector(refreshView)
+      forControlEvents:UIControlEventValueChanged];
+
+    self.refreshControl = refresh;
+    
+    
+    
+    
+}
+
+-(void) refreshView{
+    
+    [self fetchPromotionDetail:storeDetail.storeId];
+    [self.refreshControl endRefreshing];
+   
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -111,8 +129,25 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     
-    PromotionDetail *object = [storeDetail.promotionDetails objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[object.promotionId stringValue]];
+    cell.imageView.frame = CGRectMake(0,0,32,32);
+    
+    PromotionDetail *promotionDetail = [storeDetail.promotionDetails objectAtIndex:[indexPath row]];
+    NSString *discountString=[NSString stringWithFormat:@" - "];
+    discountString=[discountString stringByAppendingString:[promotionDetail.promotionDiscount stringValue] ];
+    discountString=[discountString stringByAppendingString:@"% Off"];
+    [[cell textLabel] setText:[promotionDetail.promotionName stringByAppendingString:discountString]];
+    NSData* imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString: promotionDetail.promotionImageLink]];
+    UIImage* image = [[UIImage alloc] initWithData:imageData];
+    
+    cell.imageView.image =image;
+    cell.textLabel.numberOfLines = 0;
+  
+    //[cell.textLabel sizeToFit];
+    
+    cell.detailTextLabel.text=[promotionDetail  promotionDescription];
+    cell.detailTextLabel.numberOfLines=0;
+    
+    
     return cell;
 }
 
@@ -160,7 +195,9 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
 {
     
    
-    
+    //clear table
+    [storeDetail.promotionDetails removeAllObjects];
+    [self.tableView reloadData];
     
     NSString *storeIdString=[storeId stringValue];
     NSLog(@"Store Id : %@",storeIdString);

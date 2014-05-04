@@ -9,7 +9,7 @@
 #import "PromotionDetail.h"
 
 @implementation PromotionDetail
-@synthesize promoId,discValue;
+@synthesize promotionDescription,promotionDiscount,promotionDiscountCode,promotionId,promotionName,promotionActualPrice,promotionStartDate,promotionEndDate,promotionImageLink;
 
 
 

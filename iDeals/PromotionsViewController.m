@@ -11,12 +11,13 @@
 #import "DetailViewController.h"
 #import "StoreDetail.h"
 @interface PromotionsViewController () {
-    NSMutableArray *promotionList;
+    
 }
 @end
 
 @implementation PromotionsViewController
 @synthesize storeDetail;
+NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/getpromotion/";
 
 - (void)setStoreDetail:(StoreDetail *)newDetailItem
 {
@@ -25,7 +26,10 @@
         NSLog(@"Store Name in Promotion View :%@",storeDetail.storeName);
         // Update the view.
       //  [self configureView];
-        
+        if(!storeDetail.promotionDetails)
+        {
+            storeDetail.promotionDetails=[[NSMutableArray alloc]init];
+        }
     }
 }
 
@@ -33,7 +37,7 @@
 {
     self.clearsSelectionOnViewWillAppear = NO;
     self.preferredContentSize = CGSizeMake(320.0, 600.0);
-    promotionList=[[NSMutableArray alloc]init];
+    
     [super awakeFromNib];
 }
 
@@ -53,12 +57,18 @@
     //self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
+     //clear table
+    [storeDetail.promotionDetails removeAllObjects];
+    [self.tableView reloadData];
+    
+    [self fetchPromotionDetail:storeDetail.storeId];
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:true];
-    [self fetchPromotionDetail];
+    
     
 }
 
@@ -91,8 +101,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    NSLog(@"Promotion count : %d",promotionList.count);
-    return promotionList.count;
+    NSLog(@"Promotion count : %d",storeDetail.promotionDetails.count);
+    return storeDetail.promotionDetails.count;
     
 }
 
@@ -101,8 +111,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     
-    PromotionDetail *object = [promotionList objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[NSString stringWithFormat:@"%d",[object promoId]]];
+    PromotionDetail *object = [storeDetail.promotionDetails objectAtIndex:[indexPath row]];
+    [[cell textLabel] setText:[object.promotionId stringValue]];
     return cell;
 }
 
@@ -115,7 +125,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [promotionList removeObjectAtIndex:indexPath.row];
+        [storeDetail.promotionDetails removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -144,48 +154,25 @@
     self.detailViewController.detailItem = object;
 }
 */
+
 /* Web Service Request for promotion details*/
-- (void)fetchPromotionDetail;
+- (void)fetchPromotionDetail:(NSNumber *) storeId
 {
     
+   
     
-    /*PromotionDetail *s=[[PromotionDetail alloc] init];
-    s.promoId=@"12";
-    s.discValue=@"23";
-    [self insertRow:s];*/
     
-    NSURL *url = [NSURL URLWithString:@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/promotion/1"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSURLResponse *response;
-    NSError *error;
-    //[NSURLConnection sendSynchronousRequest:request returningResponse:(NSURLResponse *__autoreleasing *) error:(NSError *__autoreleasing *)]
-    NSData *data=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    if (data.length > 0 && error == nil)
-    {
-        NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data
-                                                                options:0
-                                                                  error:NULL];
-        NSArray *storeDetails = results[@"items"] ;
-        NSDictionary *dictionary = [storeDetails objectAtIndex:0];
-        
-        PromotionDetail *pro=[[PromotionDetail alloc] init];
-        pro.promoId=[dictionary objectForKey:@"promotion_id"] ;
-       // NSLog(@"%@",NSStringFromClass([pro.promoId class]));
-        pro.discValue=[dictionary objectForKey:@"discount"];
-        
-        NSLog(@"Promotion Name : %d",pro.promoId);
-        NSLog(@"Promotion Discount: %d",pro.discValue);
-        [promotionList insertObject:pro atIndex:0];
-        NSLog(@"Promotion count : %d",promotionList.count);
-        
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        //[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        //[self.tableView reloadData];
-        
-    }
+    NSString *storeIdString=[storeId stringValue];
+    NSLog(@"Store Id : %@",storeIdString);
+    NSString *urlString = [iDealsPromotionBaseUrl stringByAppendingString:storeIdString];
+    
+    NSLog(@"Promotion URL : %@",urlString);
 
-    /*[NSURLConnection sendAsynchronousRequest:request
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
+
+    [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response,
                                                NSData *data, NSError *connectionError)
@@ -194,38 +181,51 @@
          
          if (data.length > 0 && connectionError == nil)
          {
-             NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data
-                                                                     options:0
-                                                                       error:NULL];
-             NSArray *storeDetails = results[@"items"] ;
-             NSDictionary *dictionary = [storeDetails objectAtIndex:0];
+            NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            NSArray *storeDetails = results[@"items"] ;
+            
              
-             PromotionDetail *s=[[PromotionDetail alloc] init];
-             s.promoId=[dictionary objectForKey:@"promotion_id"];
-             s.discValue=[dictionary objectForKey:@"discount"];
-             NSLog(@"Promotion Name : %@",s.promoId);
+             for(NSDictionary *promotionDictionay in storeDetails)
+             {
+                 
+                 PromotionDetail *promotion=[[PromotionDetail alloc] init];
+                 promotion.promotionId=[promotionDictionay objectForKey:@"promotion_id"] ;
+                 promotion.promotionDescription=[promotionDictionay objectForKey:@"promotion_desc"];
+                 promotion.promotionName=[promotionDictionay objectForKey:@"promotion_name"] ;
+                 promotion.promotionActualPrice=[promotionDictionay objectForKey:@"actual_price"];
+                 promotion.promotionStartDate=[promotionDictionay objectForKey:@"start_date"];
+                 promotion.promotionEndDate=[promotionDictionay objectForKey:@"end_date"] ;
+                 promotion.promotionDiscount=[promotionDictionay objectForKey:@"discount"];
+                 promotion.promotionImageLink=[promotionDictionay objectForKey:@"image_link"];
+                 
+                 NSLog(@"Promotion Id : %@",[promotion.promotionId stringValue]);
+                 NSLog(@"Promotion Discount: %@",[promotion.promotionDiscount stringValue]);
+                 
+                 [storeDetail.promotionDetails insertObject:promotion atIndex:0];
+                 
+                 
+                 NSLog(@"Promotion count : %d",storeDetail.promotionDetails.count);
+                 
+                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                 [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+             }
+            //NSDictionary *dictionary = [storeDetails objectAtIndex:0];
+     
              
-             [promotionList insertObject:s atIndex:0];
-             NSLog(@"Promotion count : %d",promotionList.count);
-             
-             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-             [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-             //[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-             //[self.tableView reloadData];
-             
+     
          }
-         
-     }];*/
+     
+     }];
 }
 
--(void) insertRow:(PromotionDetail *) p
+-(void) insertRow:(PromotionDetail *) promotion
 {
     
-    //s.storeName=[dictionary objectForKey:@"store_name"];
-    //s.address=[dictionary objectForKey:@"address"];
-    NSLog(@"Store Name : %@",p.promoId);
+
+    NSLog(@"Promotion Id: %@",promotion.promotionId);
     
-    [promotionList insertObject:p atIndex:0];
+    [storeDetail.promotionDetails insertObject:promotion atIndex:0];
     
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];

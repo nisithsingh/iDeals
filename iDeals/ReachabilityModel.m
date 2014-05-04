@@ -13,7 +13,7 @@
 @implementation ReachabilityModel
 @synthesize status,bluetoothManager,hostReachability,internetReachability,wifiReachability;
 
-extern NSString* const iDealsBaseURL = @"http://apex.oracle.com/pls/apex/viczsaurav/iDeals/";
+ NSString* const iDealsBaseURL = @"http://apex.oracle.com/pls/apex/viczsaurav/iDeals/";
 
 /*!
  * Main method to provide the status of all Network reachability options

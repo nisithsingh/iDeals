@@ -12,6 +12,9 @@
 {
     
 }
+@property(nonatomic,retain) NSNumber *storeId;
 @property(nonatomic,retain) NSString *storeName;
-@property(nonatomic,retain) NSString *address;
+@property(nonatomic,retain) NSString *storeAddress;
+@property(nonatomic,retain) NSMutableArray *promotionDetails;
+@property(nonatomic,retain) NSNumber *storePhoneNumber;
 @end

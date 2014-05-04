@@ -111,6 +111,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F1A317019167BD7000D819A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				3F69212D19142BD2006F3D5E /* StoreDetail.h */,
+				3F69212E19142BD2006F3D5E /* StoreDetail.m */,
+				E72249461915496D008FB9DF /* PromotionDetail.h */,
+				E72249471915496D008FB9DF /* PromotionDetail.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		E7A8F24719136FA9003E9A05 /* bleepManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +195,7 @@
 		EB96FCBE19120D2F00AE4681 /* iDeals */ = {
 			isa = PBXGroup;
 			children = (
+				3F1A317019167BD7000D819A /* model */,
 				E7A8F24E191370DD003E9A05 /* iPad */,
 				EB96FCCA19120D2F00AE4681 /* Main.storyboard */,
 				E7224943191543C3008FB9DF /* PromotionsViewController.h */,
@@ -198,10 +210,6 @@
 				EB96FCD119120D2F00AE4681 /* DetailViewController.m */,
 				EB96FCD319120D2F00AE4681 /* Images.xcassets */,
 				EB96FCBF19120D2F00AE4681 /* Supporting Files */,
-				3F69212D19142BD2006F3D5E /* StoreDetail.h */,
-				3F69212E19142BD2006F3D5E /* StoreDetail.m */,
-				E72249461915496D008FB9DF /* PromotionDetail.h */,
-				E72249471915496D008FB9DF /* PromotionDetail.m */,
 			);
 			path = iDeals;
 			sourceTree = "<group>";
@@ -475,7 +483,7 @@
 					/Users/student1/Documents/A0119930/iDeals/bleepManager,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -494,7 +502,7 @@
 					/Users/student1/Documents/A0119930/iDeals/bleepManager,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -13,8 +13,14 @@
     
 }
 
-@property (nonatomic) NSNumber *promoId;
-@property (nonatomic) NSNumber *discValue;
-
+@property (nonatomic,strong) NSNumber *promotionId;
+@property (nonatomic,strong) NSString *promotionName;
+@property (nonatomic,strong) NSNumber *promotionDiscount;
+@property (nonatomic,strong) NSString *promotionDescription;
+@property (nonatomic,strong) NSNumber *promotionActualPrice;
+@property (nonatomic,strong) NSDate *promotionStartDate;
+@property (nonatomic,strong) NSDate *promotionEndDate;
+@property (nonatomic,strong) NSString *promotionDiscountCode;
+@property (nonatomic,strong) NSString *promotionImageLink;
 
 @end

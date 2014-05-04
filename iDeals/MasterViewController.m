@@ -22,6 +22,7 @@
 
 @implementation MasterViewController
 @synthesize locationManager,storeDetailList;
+NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeals/getstore/";
 
 - (void)awakeFromNib
 {
@@ -29,6 +30,7 @@
     [super awakeFromNib];
     foundBeacons = [[NSMutableArray alloc] init];
     storeDetailList = [[NSMutableArray alloc] init];
+    
     
 }
 
@@ -52,11 +54,7 @@
     [self startTracking:self];
     
     /* insert defaul test row */
-    StoreDetail *s=[[StoreDetail alloc] init];
-    s.storeName=@"store 1";
-    s.address=@"store address";
-    [self insertRow:s];
-    
+    [self fetchStoreDetail:@"3AE96580-33DB-458B-8024-2B3C63E0E920"];
 }
 - (void)stopRefresh
 
@@ -103,8 +101,9 @@
 
     //NSString *object = foundBeacons[indexPath.row];
     //cell.textLabel.text = object;
-    StoreDetail *s=[storeDetailList objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[s.storeName stringByAppendingString:[@" - " stringByAppendingString:s.address]]];
+    StoreDetail *storeDetail=[storeDetailList objectAtIndex:[indexPath row]];
+    //if(!storeDetail.storeName)
+    [[cell textLabel] setText:[storeDetail.storeName stringByAppendingString:[@" - " stringByAppendingString:storeDetail.storeAddress]]];
     return cell;
 }
 
@@ -191,7 +190,7 @@
             [foundBeacons insertObject:beacon atIndex:0];
           //   NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
           //  [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [self fetchStoreDetail];
+            [self fetchStoreDetail:beacon.proximityUUID.UUIDString];
         }
         //textView.text  = [detectedNumbers stringByAppendingString:textView.text];
         
@@ -260,9 +259,13 @@
 
 
 /* Web Service Request for store details*/
-- (void)fetchStoreDetail;
+- (void)fetchStoreDetail:(NSString *)beaconId
 {
-    NSURL *url = [NSURL URLWithString:@"http://apex.oracle.com/pls/apex/viczsaurav/iDeals/store/3AE96580-33DB-458B-8024-2B3C63E0E920"];
+    NSString *urlString = [iDealsBaseUrl stringByAppendingString:beaconId];
+    
+    NSLog(@"URL : %@",urlString);
+    
+    NSURL *url = [NSURL URLWithString: urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
@@ -277,12 +280,14 @@
              NSArray *storeDetails = results[@"items"] ;
              NSDictionary *dictionary = [storeDetails objectAtIndex:0];
             
-             StoreDetail *s=[[StoreDetail alloc] init];
-             s.storeName=[dictionary objectForKey:@"store_name"];
-             s.address=[dictionary objectForKey:@"address"];
-             NSLog(@"Store Name : %@",s.storeName);
+             StoreDetail *storeDetail=[[StoreDetail alloc] init];
+             storeDetail.storeName=[dictionary objectForKey:@"store_name"];
+             storeDetail.storeAddress=[dictionary objectForKey:@"store_address"];
+              storeDetail.storeId=[dictionary objectForKey:@"store_id"];
+              storeDetail.storePhoneNumber=[dictionary objectForKey:@"store_phone"];
+             NSLog(@"Store Name : %@",storeDetail.storeName);
              
-             [storeDetailList insertObject:s atIndex:0];
+             [storeDetailList insertObject:storeDetail atIndex:0];
              
              
              NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -291,14 +296,14 @@
      }];
 }
 
--(void) insertRow:(StoreDetail *) s
+-(void) insertRow:(StoreDetail *) storeDetail
 {
    
     //s.storeName=[dictionary objectForKey:@"store_name"];
     //s.address=[dictionary objectForKey:@"address"];
-    NSLog(@"Store Name : %@",s.storeName);
+    NSLog(@"Store Name : %@",storeDetail.storeName);
     
-    [storeDetailList insertObject:s atIndex:0];
+    [storeDetailList insertObject:storeDetail atIndex:0];
     
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];

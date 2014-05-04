@@ -14,6 +14,7 @@
 #import "StoreDetail.h"
 #import "PromotionsViewController.h"
 
+@class ReachabilityModel;
 @interface MasterViewController () {
     NSMutableArray *_objects;
     NSMutableArray *foundBeacons;
@@ -21,7 +22,7 @@
 @end
 
 @implementation MasterViewController
-@synthesize locationManager,storeDetailList;
+@synthesize locationManager,storeDetailList,reachablity;
 NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeals/getstore/";
 
 - (void)awakeFromNib
@@ -30,6 +31,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     [super awakeFromNib];
     foundBeacons = [[NSMutableArray alloc] init];
     storeDetailList = [[NSMutableArray alloc] init];
+    reachablity=[[ReachabilityModel alloc] init];
     
     
 }
@@ -44,7 +46,8 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     //self.navigationItem.rightBarButtonItem = addButton;
     
-    /*  Pull to Refresh  */
+  
+    [reachablity isReachable];
     
     [[bleepManager sharedInstance] setDelegate:self];
     [self startTracking:self];

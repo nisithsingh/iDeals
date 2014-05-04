@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "bleepManager.h"
-
+#import "ReachabilityModel.h"
 #define k_UUID @"3AE96580-33DB-458B-8024-2B3C63E0E920"
 
 
@@ -18,4 +18,5 @@
 //@property (nonatomic, assign) NSMutableArray *foundBeacons;
 @property(nonatomic, strong) CLLocationManager *locationManager;
 @property(nonatomic,strong) NSMutableArray *storeDetailList;
+@property(nonatomic,strong) ReachabilityModel *reachablity;
 @end

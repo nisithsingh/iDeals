@@ -58,11 +58,12 @@
  */
 - (void)updateInterfaceWithReachability:(Reachability *)reachability
 {
-    if ((reachability == self.hostReachability) ||
+       if ((reachability == self.hostReachability) ||
         (reachability == self.internetReachability) ||
         (reachability == self.wifiReachability)) {
         
-    	NetworkStatus netStatus = [reachability currentReachabilityStatus];
+        Reachability *isreachable = [Reachability reachabilityWithHostName:@"www.google.com"];
+        NetworkStatus netStatus = [isreachable currentReachabilityStatus];
         if ((netStatus == ReachableViaWiFi) || (netStatus== ReachableViaWWAN)) {
             status = YES;
         }
@@ -91,7 +92,8 @@
                           delegate:self cancelButtonTitle:@"ok"
                           otherButtonTitles:nil
                           ];
-    NSURLRequest *request = [NSURLRequest requestWithURL: (NSURL *)iDealsBaseURL];
+     NSURL *url = [NSURL URLWithString: iDealsBaseURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL: (NSURL *)url];
     [NSURLConnection sendAsynchronousRequest:request
                                               queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
@@ -130,7 +132,7 @@
         // Put on main queue so we can call UIAlertView from delegate callbacks.
         self.bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:dispatch_get_main_queue()];
     }
-    [self centralManagerDidUpdateState:self.bluetoothManager]; // Show initial state
+    //[self centralManagerDidUpdateState:self.bluetoothManager]; // Show initial state
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
@@ -138,8 +140,7 @@
     NSString *stateString = nil;
     switch(bluetoothManager.state)
     {
-        case CBCentralManagerStateUnsupported: stateString = @"The platform doesn't support Bluetooth Low Energy."; break;
-        case CBCentralManagerStateUnauthorized: stateString = @"The app is not authorized to use Bluetooth Low Energy."; break;
+        //case CBCentralManagerStateUnsupported: stateString = @"The platform doesn't support Bluetooth Low Energy."; break;
         case CBCentralManagerStatePoweredOff: stateString = @"Bluetooth is currently powered off."; break;
         case CBCentralManagerStatePoweredOn: stateString = @"Bluetooth is currently powered on and available to use."; break;
         default: stateString = @"Please check bluetooth connection."; break;

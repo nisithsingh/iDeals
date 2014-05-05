@@ -269,4 +269,7 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (IBAction)refreshPromotion:(id)sender {
+    [self fetchPromotionDetail:storeDetail.storeId];
+}
 @end

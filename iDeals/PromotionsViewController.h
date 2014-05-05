@@ -12,6 +12,7 @@
 
 @interface PromotionsViewController : UITableViewController
 
+- (IBAction)refreshPromotion:(id)sender;
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (strong, nonatomic) StoreDetail *storeDetail;
 - (void)setStoreDetail:(id)newDetailItem;

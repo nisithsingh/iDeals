@@ -230,10 +230,17 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
                  promotion.promotionDescription=[promotionDictionay objectForKey:@"promotion_desc"];
                  promotion.promotionName=[promotionDictionay objectForKey:@"promotion_name"] ;
                  promotion.promotionActualPrice=[promotionDictionay objectForKey:@"actual_price"];
-                 promotion.promotionStartDate=[promotionDictionay objectForKey:@"start_date"];
-                 promotion.promotionEndDate=[promotionDictionay objectForKey:@"end_date"] ;
+                 NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                 //[dateFormatter setDateStyle:NSDateFormatterFullStyle];
+                // [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
+                 [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+
+                 promotion.promotionStartDate=[dateFormatter dateFromString:[promotionDictionay objectForKey:@"start_date"]];
+                 //promotion.promotionStartDate=[promotionDictionay objectForKey:@"start_date"];
+                 promotion.promotionEndDate=[dateFormatter dateFromString:[promotionDictionay objectForKey:@"end_date"]] ;
                  promotion.promotionDiscount=[promotionDictionay objectForKey:@"discount"];
                  promotion.promotionImageLink=[promotionDictionay objectForKey:@"image_link"];
+                 promotion.promotionDiscountCode=[promotionDictionay objectForKey:@"discount_code"];
                  
                  NSLog(@"Promotion Id : %@",[promotion.promotionId stringValue]);
                  NSLog(@"Promotion Discount: %@",[promotion.promotionDiscount stringValue]);
@@ -272,4 +279,15 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
 - (IBAction)refreshPromotion:(id)sender {
     [self fetchPromotionDetail:storeDetail.storeId];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"promotionDetailSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        //NSDate *object = _objects[indexPath.row];
+        PromotionDetail *promotionDetail=[storeDetail.promotionDetails objectAtIndex:indexPath.row];
+        [[segue destinationViewController] setPromotionDetail:promotionDetail];
+    }
+}
+
 @end

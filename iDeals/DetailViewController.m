@@ -13,16 +13,17 @@
 @end
 
 @implementation DetailViewController
-
+@synthesize promotionDetail;
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setPromotionDetail:(PromotionDetail *)newPromotionDetail
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (promotionDetail != newPromotionDetail) {
+        promotionDetail = newPromotionDetail;
         
+        NSLog(@"Promotion Detail View : %@",promotionDetail.promotionDescription);
         // Update the view.
-        [self configureView];
+        //[self configureView];
     }
 }
 
@@ -30,9 +31,41 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    if (self.promotionDetail) {
+        
+        NSData* imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString: promotionDetail.promotionImageLink]];
+        UIImage* image = [[UIImage alloc] initWithData:imageData];
+        self.promotionImageView.image =image;
+        
+        NSString *discountString=[@"Off %" stringByAppendingString:[promotionDetail.promotionDiscount stringValue]];
+        self.discountLabel.text=discountString;
+        
+        NSString *priceString=[[promotionDetail.promotionActualPrice stringValue] stringByAppendingString:@" SGD"];
+        self.actualPriceLabel.text=priceString;
+        
+        float discountedPrice=([promotionDetail.promotionActualPrice floatValue] - (([promotionDetail.promotionDiscount floatValue] * [promotionDetail.promotionActualPrice floatValue])/(float)100));
+        self.DiscountedPriceLabel.text=[[NSString stringWithFormat:@"%.02f",discountedPrice] stringByAppendingString:@" SGD"];
+        
+        float youSave=[promotionDetail.promotionActualPrice floatValue]-discountedPrice;
+        self.youSaveLabel.text=[[NSString stringWithFormat:@"%.02f",youSave] stringByAppendingString:@" SGD"];
+
+        
+        NSDateFormatter *dateFormatter=[DetailViewController getDateFormatter];
+        
+        self.startDateLabel.text= [dateFormatter stringFromDate:promotionDetail.promotionStartDate];
+        NSLog(@"start Date :%@",[dateFormatter stringFromDate:[NSDate date]]);
+        self.EndDateLabel.text= [dateFormatter stringFromDate:promotionDetail.promotionEndDate];
+        self.startDateLabel.numberOfLines=0;
+        self.EndDateLabel.numberOfLines=0;
+        
+        
     }
+}
+
++ (NSDateFormatter *) getDateFormatter{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+    return dateFormatter;
 }
 
 - (void)viewDidLoad

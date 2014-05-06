@@ -19,4 +19,5 @@
 @property(nonatomic, strong) CLLocationManager *locationManager;
 @property(nonatomic,strong) NSMutableArray *storeDetailList;
 @property(nonatomic,strong) ReachabilityModel *reachablity;
+-(void) mapButtonClicked:(id)sender;
 @end

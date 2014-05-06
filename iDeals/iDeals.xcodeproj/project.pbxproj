@@ -18,6 +18,8 @@
 		E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8F25019137734003E9A05 /* beaconDetection.m */; };
 		EB488DB21918E5E000BC7CA0 /* paypal-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EB488DB11918E5E000BC7CA0 /* paypal-logo.png */; };
 		EB488DB71918EC4B00BC7CA0 /* swipePic.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EB488DB61918EC4B00BC7CA0 /* swipePic.PNG */; };
+		EB488DBA1918F2A500BC7CA0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB488DB91918F2A500BC7CA0 /* MapViewController.m */; };
+		EB488DBC1918FD6F00BC7CA0 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EB488DBB1918FD6F00BC7CA0 /* logo.png */; };
 		EB96FCB919120D2F00AE4681 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCB819120D2F00AE4681 /* Foundation.framework */; };
 		EB96FCBB19120D2F00AE4681 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCBA19120D2F00AE4681 /* CoreGraphics.framework */; };
 		EB96FCBD19120D2F00AE4681 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCBC19120D2F00AE4681 /* UIKit.framework */; };
@@ -66,6 +68,9 @@
 		E7A8F25019137734003E9A05 /* beaconDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beaconDetection.m; sourceTree = "<group>"; };
 		EB488DB11918E5E000BC7CA0 /* paypal-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paypal-logo.png"; path = "../../../paypal-logo.png"; sourceTree = "<group>"; };
 		EB488DB61918EC4B00BC7CA0 /* swipePic.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = swipePic.PNG; path = ../../../../Downloads/swipePic.PNG; sourceTree = "<group>"; };
+		EB488DB81918F2A500BC7CA0 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = iDeals/MapViewController.h; sourceTree = "<group>"; };
+		EB488DB91918F2A500BC7CA0 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = iDeals/MapViewController.m; sourceTree = "<group>"; };
+		EB488DBB1918FD6F00BC7CA0 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../../Downloads/logo.png; sourceTree = "<group>"; };
 		EB96FCB519120D2F00AE4681 /* iDeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB96FCB819120D2F00AE4681 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EB96FCBA19120D2F00AE4681 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -172,6 +177,7 @@
 		EB488DB31918E64600BC7CA0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EB488DBB1918FD6F00BC7CA0 /* logo.png */,
 				EB488DB61918EC4B00BC7CA0 /* swipePic.PNG */,
 				EB488DB11918E5E000BC7CA0 /* paypal-logo.png */,
 			);
@@ -181,6 +187,8 @@
 		EB96FCAC19120D2E00AE4681 = {
 			isa = PBXGroup;
 			children = (
+				EB488DB81918F2A500BC7CA0 /* MapViewController.h */,
+				EB488DB91918F2A500BC7CA0 /* MapViewController.m */,
 				EBE77A211918BAB600F7A519 /* PayPalMobile */,
 				E722498D19158E2F008FB9DF /* ReachabilityModel.h */,
 				E722498E19158E2F008FB9DF /* ReachabilityModel.m */,
@@ -360,6 +368,7 @@
 				EB96FCCC19120D2F00AE4681 /* Main.storyboard in Resources */,
 				EB488DB71918EC4B00BC7CA0 /* swipePic.PNG in Resources */,
 				EB488DB21918E5E000BC7CA0 /* paypal-logo.png in Resources */,
+				EB488DBC1918FD6F00BC7CA0 /* logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +397,7 @@
 				E72249481915496D008FB9DF /* PromotionDetail.m in Sources */,
 				EB96FCD219120D2F00AE4681 /* DetailViewController.m in Sources */,
 				E722498F19158E2F008FB9DF /* ReachabilityModel.m in Sources */,
+				EB488DBA1918F2A500BC7CA0 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 #import "bleepBeacon.h"
 #import "StoreDetail.h"
 #import "PromotionsViewController.h"
+#import "MapViewController.h"
 
 @class ReachabilityModel;
 @interface MasterViewController () {
@@ -104,7 +105,31 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     cell.detailTextLabel.text=[[[storeDetail.storePhoneNumber stringValue] stringByAppendingString:@"\n"] stringByAppendingString:storeDetail.storeAddress];
     cell.detailTextLabel.numberOfLines=0;
     cell.textLabel.numberOfLines=0;
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    //set the position of the button
+    button.frame = CGRectMake(cell.frame.origin.x + 130, cell.frame.origin.y + 70, 100, 30);
+    [button setTitle:@"Show on Map" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(mapButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor= [UIColor clearColor];
+    
+    [cell.contentView addSubview:button];
+
+    
+    
     return cell;
+}
+
+-(void) mapButtonClicked:(id)sender{
+    NSLog(@"mapButtonClicked");
+   
+    MapViewController *nextViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
+    // and push it onto the 'navigation stack'
+    [self.navigationController pushViewController:nextViewController animated:YES];
+    //[self.navigationController pushNavigationController:nextViewController animated:YES];
+    // and release
+    //[nextViewController release];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

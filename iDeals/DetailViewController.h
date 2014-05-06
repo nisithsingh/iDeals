@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PromotionDetail.h"
-@interface DetailViewController : UIViewController
+#import "PayPalMobile.h"
+@interface DetailViewController : UIViewController<PayPalPaymentDelegate>
 
 @property (strong, nonatomic) id detailItem;
 
@@ -22,4 +23,7 @@
 @property (strong, nonatomic) PromotionDetail *promotionDetail;
 @property (weak, nonatomic) IBOutlet UIImageView *promotionImageView;
 + (NSDateFormatter *) getDateFormatter;
+@property (nonatomic,strong,readwrite) PayPalConfiguration *payPalConfiguration;
+- (IBAction)buttonClick:(id)sender;
+
 @end

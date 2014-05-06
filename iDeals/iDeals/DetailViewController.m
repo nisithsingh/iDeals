@@ -188,7 +188,7 @@
 
 + (NSDateFormatter *) getDateFormatter{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd':'HH:mm"];
     return dateFormatter;
 }
 

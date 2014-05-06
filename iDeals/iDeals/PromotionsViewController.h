@@ -15,6 +15,9 @@
 - (IBAction)refreshPromotion:(id)sender;
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (strong, nonatomic) StoreDetail *storeDetail;
+//For swipe
+//@property (strong,nonatomic) NSMutableArray *allStrorePromos;
 - (void)setStoreDetail:(id)newDetailItem;
+
 
 @end

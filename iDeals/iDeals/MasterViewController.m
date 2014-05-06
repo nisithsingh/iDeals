@@ -9,8 +9,8 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
-//#import "bleepManager.h"
-//#import "bleepBeacon.h"
+#import "bleepManager.h"
+#import "bleepBeacon.h"
 #import "StoreDetail.h"
 #import "PromotionsViewController.h"
 
@@ -49,8 +49,8 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
   
     [reachablity isReachable];
     
-    /*[[bleepManager sharedInstance] setDelegate:self];
-    [self startTracking:self];*/
+    [[bleepManager sharedInstance] setDelegate:self];
+    [self startTracking:self];
     
     /* insert defaul test row */
     [self fetchStoreDetail:@"3AE96580-33DB-458B-8024-2B3C63E0E920"];
@@ -149,7 +149,6 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     }
 }
 
-/*
 -(void)beaconManager:(bleepManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
 {
 	NSString* proxrange;
@@ -251,7 +250,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     //textView.text  = [@"bleep! Stop monitoring\n" stringByAppendingString:textView.text];
     
 }
-*/
+
 
 /* Web Service Request for store details*/
 - (void)fetchStoreDetail:(NSString *)beaconId

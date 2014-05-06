@@ -286,7 +286,8 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         //NSDate *object = _objects[indexPath.row];
         PromotionDetail *promotionDetail=[storeDetail.promotionDetails objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setPromotionDetail:promotionDetail];
+        //[[segue destinationViewController] setPromotionDetail:promotionDetail ];
+        [[segue destinationViewController] setPromotionDetail:promotionDetail AlongWithAllPromos:storeDetail.promotionDetails];
     }
 }
 

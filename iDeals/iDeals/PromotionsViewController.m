@@ -29,6 +29,7 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
         if(!storeDetail.promotionDetails)
         {
             storeDetail.promotionDetails=[[NSMutableArray alloc]init];
+            [self fetchPromotionDetail:storeDetail.storeId];
         }
     }
 }
@@ -61,7 +62,7 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
     
  
     
-    [self fetchPromotionDetail:storeDetail.storeId];
+   // [self fetchPromotionDetail:storeDetail.storeId];
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];

@@ -92,14 +92,33 @@
 // SomeViewController.m
 
 - (void)verifyCompletedPayment:(PayPalPayment *)completedPayment {
-    // Send the entire confirmation dictionary
-   // NSData *confirmation = [NSJSONSerialization dataWithJSONObject:completedPayment.confirmation
-                                                           //options:0
-                                                             //error:nil];
-    NSLog(@"JSON Respnse:%@",completedPayment);
-    // Send confirmation to your server; your server should verify the proof of payment
-    // and give the user their goods or services. If the server is not reachable, save
-    // the confirmation and try again later.
+/*
+ * Saving details on Server
+ */
+    ///build an info object and convert to json
+    NSDictionary *results = completedPayment.confirmation;
+    NSDictionary* request = [NSDictionary dictionaryWithObjectsAndKeys:
+                             [results[@"response"] objectForKey:@"id"],@"id",
+                             [results[@"response"] objectForKey:@"intent"],@"intent",
+                             [results[@"response"] objectForKey:@"state"],@"state",
+                             results[@"response_type"],@"response_type",
+                             nil];
+    
+    //convert object to data
+    NSError *error;
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:request
+                                                       options:NSJSONWritingPrettyPrinted error:&error];
+    NSLog(@"Data = %@", jsonData);
+    
+    NSMutableURLRequest *urlrequest = [NSMutableURLRequest requestWithURL:
+                                       [NSURL URLWithString:@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/success/"]];
+    [urlrequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlrequest setHTTPMethod:@"POST"];
+    [urlrequest setHTTPBody:jsonData];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlrequest delegate:self];
+    if (connection) {
+        NSLog(@"Success");
+    }
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {

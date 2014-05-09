@@ -196,9 +196,7 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
 {
     
    
-    //clear table
-    [storeDetail.promotionDetails removeAllObjects];
-    [self.tableView reloadData];
+    
     
     NSString *storeIdString=[storeId stringValue];
     NSLog(@"Store Id : %@",storeIdString);
@@ -209,13 +207,14 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
 
-
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response,
                                                NSData *data, NSError *connectionError)
      {
-         
+         //clear table
+         [storeDetail.promotionDetails removeAllObjects];
+         [self.tableView reloadData];
          
          if (data.length > 0 && connectionError == nil)
          {

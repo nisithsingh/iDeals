@@ -44,7 +44,9 @@
    // payment.amount = self.DiscountedPriceLabel.text ;
   float discountedPrice=([promotionDetail.promotionActualPrice floatValue] - (([promotionDetail.promotionDiscount floatValue] * [promotionDetail.promotionActualPrice floatValue])/(float)100));
     payment.currencyCode = @"SGD";
-    payment.amount = [[NSDecimalNumber alloc] initWithFloat:discountedPrice];
+    NSString *dp=[NSString stringWithFormat:@"%.02f",discountedPrice];
+ 
+    payment.amount = [[NSDecimalNumber alloc] initWithFloat:[dp floatValue]];
     payment.shortDescription = promotionDetail.promotionDescription;
     NSLog(@"Promotion Detail View : %@",promotionDetail.promotionDescription);
     

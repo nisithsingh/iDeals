@@ -18,4 +18,6 @@
 @property(nonatomic,retain) NSMutableArray *promotionDetails;
 @property(nonatomic,retain) NSNumber *storePhoneNumber;
 @property (nonatomic,strong) NSString *storeLogo;
+@property (nonatomic,strong) NSNumber *minorId;
+@property (nonatomic,strong) NSNumber *majorId;
 @end

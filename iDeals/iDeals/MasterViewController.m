@@ -54,7 +54,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     [self startTracking:self];
     
     /* insert defaul test row */
-    [self fetchStoreDetail:@"3AE96580-33DB-458B-8024-2B3C63E0E920"];
+    [self fetchStoreDetail:@"3AE96580-33DB-458B-8024-2B3C63E0E920" withMinorID:0 withMajor:0];
    
 }
 
@@ -214,7 +214,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
         {
             [foundBeacons insertObject:beacon atIndex:0];
        
-            [self fetchStoreDetail:beacon.proximityUUID.UUIDString];
+            [self fetchStoreDetail:beacon.proximityUUID.UUIDString withMinorID:beacon.minor withMajor:beacon.major];
         }
     }
         [[bleepManager sharedInstance] stopBleepDiscovery];
@@ -278,7 +278,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
 
 
 /* Web Service Request for store details*/
-- (void)fetchStoreDetail:(NSString *)beaconId
+- (void)fetchStoreDetail:(NSString *)beaconId withMinorID:(NSNumber *)minorID withMajor:(NSNumber *)majorID
 {
     NSString *urlString = [iDealsBaseUrl stringByAppendingString:beaconId];
     

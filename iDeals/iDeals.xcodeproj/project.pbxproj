@@ -16,10 +16,7 @@
 		E7A8F24319136AD3003E9A05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24219136AD3003E9A05 /* CoreLocation.framework */; };
 		E7A8F24D19136FA9003E9A05 /* bleepManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24819136FA9003E9A05 /* bleepManager.a */; };
 		E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8F25019137734003E9A05 /* beaconDetection.m */; };
-		EB488DB21918E5E000BC7CA0 /* paypal-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EB488DB11918E5E000BC7CA0 /* paypal-logo.png */; };
-		EB488DB71918EC4B00BC7CA0 /* swipePic.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EB488DB61918EC4B00BC7CA0 /* swipePic.PNG */; };
 		EB488DBA1918F2A500BC7CA0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB488DB91918F2A500BC7CA0 /* MapViewController.m */; };
-		EB488DBC1918FD6F00BC7CA0 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EB488DBB1918FD6F00BC7CA0 /* logo.png */; };
 		EB96FCB919120D2F00AE4681 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCB819120D2F00AE4681 /* Foundation.framework */; };
 		EB96FCBB19120D2F00AE4681 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCBA19120D2F00AE4681 /* CoreGraphics.framework */; };
 		EB96FCBD19120D2F00AE4681 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCBC19120D2F00AE4681 /* UIKit.framework */; };
@@ -36,6 +33,9 @@
 		EB96FCE519120D3000AE4681 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB96FCE319120D3000AE4681 /* InfoPlist.strings */; };
 		EB96FCE719120D3000AE4681 /* iDealsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB96FCE619120D3000AE4681 /* iDealsTests.m */; };
 		EBE77A281918BAB600F7A519 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBE77A221918BAB600F7A519 /* libPayPalMobile.a */; };
+		EBFF7C24191CEF3D00962BAD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EBFF7C21191CEF3D00962BAD /* logo.png */; };
+		EBFF7C25191CEF3D00962BAD /* swipePic.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EBFF7C22191CEF3D00962BAD /* swipePic.PNG */; };
+		EBFF7C26191CEF3D00962BAD /* paypal-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EBFF7C23191CEF3D00962BAD /* paypal-logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,11 +66,8 @@
 		E7A8F24C19136FA9003E9A05 /* bleepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bleepManager.h; sourceTree = "<group>"; };
 		E7A8F24F19137734003E9A05 /* beaconDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beaconDetection.h; sourceTree = "<group>"; };
 		E7A8F25019137734003E9A05 /* beaconDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beaconDetection.m; sourceTree = "<group>"; };
-		EB488DB11918E5E000BC7CA0 /* paypal-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paypal-logo.png"; path = "../../../paypal-logo.png"; sourceTree = "<group>"; };
-		EB488DB61918EC4B00BC7CA0 /* swipePic.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = swipePic.PNG; path = ../../../../Downloads/swipePic.PNG; sourceTree = "<group>"; };
 		EB488DB81918F2A500BC7CA0 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = iDeals/MapViewController.h; sourceTree = "<group>"; };
 		EB488DB91918F2A500BC7CA0 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = iDeals/MapViewController.m; sourceTree = "<group>"; };
-		EB488DBB1918FD6F00BC7CA0 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../../../Downloads/logo.png; sourceTree = "<group>"; };
 		EB96FCB519120D2F00AE4681 /* iDeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB96FCB819120D2F00AE4681 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EB96FCBA19120D2F00AE4681 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -98,6 +95,9 @@
 		EBE77A251918BAB600F7A519 /* PayPalMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalMobile.h; sourceTree = "<group>"; };
 		EBE77A261918BAB600F7A519 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
 		EBE77A271918BAB600F7A519 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
+		EBFF7C21191CEF3D00962BAD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = images/logo.png; sourceTree = "<group>"; };
+		EBFF7C22191CEF3D00962BAD /* swipePic.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = swipePic.PNG; path = images/swipePic.PNG; sourceTree = "<group>"; };
+		EBFF7C23191CEF3D00962BAD /* paypal-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paypal-logo.png"; path = "images/paypal-logo.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,16 +174,6 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
-		EB488DB31918E64600BC7CA0 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				EB488DBB1918FD6F00BC7CA0 /* logo.png */,
-				EB488DB61918EC4B00BC7CA0 /* swipePic.PNG */,
-				EB488DB11918E5E000BC7CA0 /* paypal-logo.png */,
-			);
-			name = images;
-			sourceTree = "<group>";
-		};
 		EB96FCAC19120D2E00AE4681 = {
 			isa = PBXGroup;
 			children = (
@@ -225,7 +215,7 @@
 		EB96FCBE19120D2F00AE4681 /* iDeals */ = {
 			isa = PBXGroup;
 			children = (
-				EB488DB31918E64600BC7CA0 /* images */,
+				EBFF7C20191CEF1F00962BAD /* images */,
 				3F1A317019167BD7000D819A /* model */,
 				E7A8F24E191370DD003E9A05 /* iPad */,
 				EB96FCCA19120D2F00AE4681 /* Main.storyboard */,
@@ -285,6 +275,16 @@
 				EBE77A271918BAB600F7A519 /* PayPalPaymentViewController.h */,
 			);
 			path = PayPalMobile;
+			sourceTree = "<group>";
+		};
+		EBFF7C20191CEF1F00962BAD /* images */ = {
+			isa = PBXGroup;
+			children = (
+				EBFF7C21191CEF3D00962BAD /* logo.png */,
+				EBFF7C22191CEF3D00962BAD /* swipePic.PNG */,
+				EBFF7C23191CEF3D00962BAD /* paypal-logo.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,12 +363,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBFF7C24191CEF3D00962BAD /* logo.png in Resources */,
 				EB96FCD419120D2F00AE4681 /* Images.xcassets in Resources */,
 				EB96FCC319120D2F00AE4681 /* InfoPlist.strings in Resources */,
+				EBFF7C26191CEF3D00962BAD /* paypal-logo.png in Resources */,
 				EB96FCCC19120D2F00AE4681 /* Main.storyboard in Resources */,
-				EB488DB71918EC4B00BC7CA0 /* swipePic.PNG in Resources */,
-				EB488DB21918E5E000BC7CA0 /* paypal-logo.png in Resources */,
-				EB488DBC1918FD6F00BC7CA0 /* logo.png in Resources */,
+				EBFF7C25191CEF3D00962BAD /* swipePic.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

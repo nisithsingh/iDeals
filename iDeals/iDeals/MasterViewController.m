@@ -124,9 +124,15 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
 -(void) mapButtonClicked:(id)sender{
     NSLog(@"mapButtonClicked");
    
-    MapViewController *nextViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
+  //  MapViewController *nextViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
     // and push it onto the 'navigation stack'
-    [self.navigationController pushViewController:nextViewController animated:YES];
+    
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"mapViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
+   //[self.navigationController pushViewController:nextViewController animated:YES];
+   
     //[self.navigationController pushNavigationController:nextViewController animated:YES];
     // and release
     //[nextViewController release];

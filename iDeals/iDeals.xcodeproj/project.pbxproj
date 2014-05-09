@@ -17,6 +17,10 @@
 		E7A8F24D19136FA9003E9A05 /* bleepManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24819136FA9003E9A05 /* bleepManager.a */; };
 		E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8F25019137734003E9A05 /* beaconDetection.m */; };
 		EB488DBA1918F2A500BC7CA0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB488DB91918F2A500BC7CA0 /* MapViewController.m */; };
+		EB7CA969191D08F100FADC31 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7CA968191D08F100FADC31 /* AVFoundation.framework */; };
+		EB7CA96B191D08FE00FADC31 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7CA96A191D08FE00FADC31 /* SystemConfiguration.framework */; };
+		EB7CA96D191D093000FADC31 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7CA96C191D093000FADC31 /* MessageUI.framework */; };
+		EB7CA9B5191D145300FADC31 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7CA9B4191D145300FADC31 /* MapKit.framework */; };
 		EB96FCB919120D2F00AE4681 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCB819120D2F00AE4681 /* Foundation.framework */; };
 		EB96FCBB19120D2F00AE4681 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCBA19120D2F00AE4681 /* CoreGraphics.framework */; };
 		EB96FCBD19120D2F00AE4681 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB96FCBC19120D2F00AE4681 /* UIKit.framework */; };
@@ -66,8 +70,12 @@
 		E7A8F24C19136FA9003E9A05 /* bleepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bleepManager.h; sourceTree = "<group>"; };
 		E7A8F24F19137734003E9A05 /* beaconDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beaconDetection.h; sourceTree = "<group>"; };
 		E7A8F25019137734003E9A05 /* beaconDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beaconDetection.m; sourceTree = "<group>"; };
-		EB488DB81918F2A500BC7CA0 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = iDeals/MapViewController.h; sourceTree = "<group>"; };
-		EB488DB91918F2A500BC7CA0 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = iDeals/MapViewController.m; sourceTree = "<group>"; };
+		EB488DB81918F2A500BC7CA0 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		EB488DB91918F2A500BC7CA0 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		EB7CA968191D08F100FADC31 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EB7CA96A191D08FE00FADC31 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EB7CA96C191D093000FADC31 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		EB7CA9B4191D145300FADC31 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		EB96FCB519120D2F00AE4681 /* iDeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iDeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB96FCB819120D2F00AE4681 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EB96FCBA19120D2F00AE4681 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,6 +113,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB7CA9B5191D145300FADC31 /* MapKit.framework in Frameworks */,
+				EB7CA96D191D093000FADC31 /* MessageUI.framework in Frameworks */,
+				EB7CA96B191D08FE00FADC31 /* SystemConfiguration.framework in Frameworks */,
+				EB7CA969191D08F100FADC31 /* AVFoundation.framework in Frameworks */,
 				E722499119158E5C008FB9DF /* CoreBluetooth.framework in Frameworks */,
 				E7A8F24D19136FA9003E9A05 /* bleepManager.a in Frameworks */,
 				E7A8F24319136AD3003E9A05 /* CoreLocation.framework in Frameworks */,
@@ -177,8 +189,6 @@
 		EB96FCAC19120D2E00AE4681 = {
 			isa = PBXGroup;
 			children = (
-				EB488DB81918F2A500BC7CA0 /* MapViewController.h */,
-				EB488DB91918F2A500BC7CA0 /* MapViewController.m */,
 				EBE77A211918BAB600F7A519 /* PayPalMobile */,
 				E722498D19158E2F008FB9DF /* ReachabilityModel.h */,
 				E722498E19158E2F008FB9DF /* ReachabilityModel.m */,
@@ -202,6 +212,10 @@
 		EB96FCB719120D2F00AE4681 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB7CA9B4191D145300FADC31 /* MapKit.framework */,
+				EB7CA96C191D093000FADC31 /* MessageUI.framework */,
+				EB7CA96A191D08FE00FADC31 /* SystemConfiguration.framework */,
+				EB7CA968191D08F100FADC31 /* AVFoundation.framework */,
 				E722499019158E5C008FB9DF /* CoreBluetooth.framework */,
 				E7A8F24219136AD3003E9A05 /* CoreLocation.framework */,
 				EB96FCB819120D2F00AE4681 /* Foundation.framework */,
@@ -215,7 +229,8 @@
 		EB96FCBE19120D2F00AE4681 /* iDeals */ = {
 			isa = PBXGroup;
 			children = (
-				EBFF7C20191CEF1F00962BAD /* images */,
+				EB488DB81918F2A500BC7CA0 /* MapViewController.h */,
+				EB488DB91918F2A500BC7CA0 /* MapViewController.m */,
 				3F1A317019167BD7000D819A /* model */,
 				E7A8F24E191370DD003E9A05 /* iPad */,
 				EB96FCCA19120D2F00AE4681 /* Main.storyboard */,
@@ -238,6 +253,7 @@
 		EB96FCBF19120D2F00AE4681 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EBFF7C20191CEF1F00962BAD /* images */,
 				EB96FCC019120D2F00AE4681 /* iDeals-Info.plist */,
 				EB96FCC119120D2F00AE4681 /* InfoPlist.strings */,
 				EB96FCC419120D2F00AE4681 /* main.m */,
@@ -479,7 +495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lc++",
@@ -515,7 +531,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = (
 					"-lc++",
 					"-ObjC",
@@ -533,7 +549,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDeals/iDeals-Prefix.pch";
 				INFOPLIST_FILE = "iDeals/iDeals-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/student1/Documents/A0119930/iDeals/bleepManager,
@@ -553,7 +569,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDeals/iDeals-Prefix.pch";
 				INFOPLIST_FILE = "iDeals/iDeals-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/student1/Documents/A0119930/iDeals/bleepManager,

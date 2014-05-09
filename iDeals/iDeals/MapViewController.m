@@ -21,13 +21,14 @@
 @end
 
 @implementation MapViewController
-
+@synthesize mapview;
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    mapview.showsUserLocation=YES;
    
 }
 
@@ -37,4 +38,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)backButton:(id)sender {
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"masterViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
+}
 @end

@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController{
+    
+    MKMapView *mapview;
+    
+}
+
+- (IBAction)backButton:(id)sender;
+@property (nonatomic,retain) IBOutlet MKMapView *mapview;
 
 @end

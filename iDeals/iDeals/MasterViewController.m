@@ -177,6 +177,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
         //NSDate *object = _objects[indexPath.row];
         StoreDetail *sd=[storeDetailList objectAtIndex:indexPath.row];
         [[segue destinationViewController] setStoreDetail:sd];
+        
     }
 }
 

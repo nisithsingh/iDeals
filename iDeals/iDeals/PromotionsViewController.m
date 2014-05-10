@@ -288,6 +288,7 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
         PromotionDetail *promotionDetail=[storeDetail.promotionDetails objectAtIndex:indexPath.row];
         //[[segue destinationViewController] setPromotionDetail:promotionDetail ];
         [[segue destinationViewController] setPromotionDetail:promotionDetail AlongWithAllPromos:storeDetail.promotionDetails];
+         [[segue destinationViewController] setStoreDetail:storeDetail];
     }
 }
 

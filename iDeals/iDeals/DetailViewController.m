@@ -7,14 +7,17 @@
 //
 
 #import "DetailViewController.h"
-
+#import "OrderViewController.h"
 @interface DetailViewController ()
 - (void)configureView;
+
 @end
 
 @implementation DetailViewController
-@synthesize promotionDetail,allStorePromos,swipeTypeLabel,indexForSwipe;
+@synthesize promotionDetail,allStorePromos,swipeTypeLabel,indexForSwipe,paymentViewController,orderViewController,storeDetail;
 #pragma mark - Managing the detail item
+//NSString* const postPaymentSuccessUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/success/";
+//NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/getorderid/";
 
 - (void)setPromotionDetail:(PromotionDetail *)newPromotionDetail AlongWithAllPromos:(NSMutableArray*) allPromos
 {
@@ -29,12 +32,16 @@
         //[self configureView];
     }
 }
+- (void)setPromotionDetail:(StoreDetail *)newStoreDetail{
+    self.storeDetail=newStoreDetail;
+}
+
 
 - (IBAction)payButton:(id)sender {
     
     
     // Create a PayPalPayment
-    PayPalPayment *payment = [[PayPalPayment alloc] init];
+    /*PayPalPayment *payment = [[PayPalPayment alloc] init];
     
     // Amount, currency, and description
     
@@ -60,79 +67,23 @@
         // If, for example, the amount was negative or the shortDescription was empty, then
         // this payment would not be processable. You would want to handle that here.
     }
-    
+    */
     // Create a PayPalPaymentViewController.
-    PayPalPaymentViewController *paymentViewController;
-    paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment
-                                                                   configuration:self.payPalConfiguration
-                                                                        delegate:self];
+    /*NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+     orderViewController= [storyboard instantiateViewControllerWithIdentifier:@"orderViewController"];
+    [orderViewController setPayment:payment];
+    [self presentViewController:orderViewController animated:YES completion:nil];*/
+   /* paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment
+                                                                   configuration:orderViewController.payPalConfiguration
+                                                                        delegate:orderViewController];
     
     // Present the PayPalPaymentViewController.
-    [self presentViewController:paymentViewController animated:YES completion:nil];
+  
+    [self presentViewController:paymentViewController animated:YES completion:nil];*/
 
 }
 
-#pragma mark - PayPalPaymentDelegate methods
-
-- (void)payPalPaymentViewController:(PayPalPaymentViewController *)paymentViewController
-                 didCompletePayment:(PayPalPayment *)completedPayment {
-    // Payment was processed successfully; send to server for verification and fulfillment.
-    NSLog(@"PayPal Payment Success!");
-    //self.resultText.text = [completedPayment description];
-    [self verifyCompletedPayment:completedPayment];
-    // Dismiss the PayPalPaymentViewController.
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController {
-    // The payment was canceled; dismiss the PayPalPaymentViewController.
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-// SomeViewController.m
-
-- (void)verifyCompletedPayment:(PayPalPayment *)completedPayment {
-/*
- * Saving details on Server
- */
-    ///build an info object and convert to json
-    NSDictionary *results = completedPayment.confirmation;
-    NSDictionary* request = [NSDictionary dictionaryWithObjectsAndKeys:
-                             [results[@"response"] objectForKey:@"id"],@"id",
-                             [results[@"response"] objectForKey:@"intent"],@"intent",
-                             [results[@"response"] objectForKey:@"state"],@"state",
-                             results[@"response_type"],@"response_type",
-                             nil];
-    
-    //convert object to data
-    NSError *error;
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:request
-                                                       options:NSJSONWritingPrettyPrinted error:&error];
-    NSLog(@"Data = %@", jsonData);
-    
-    NSMutableURLRequest *urlrequest = [NSMutableURLRequest requestWithURL:
-                                       [NSURL URLWithString:@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/success/"]];
-    [urlrequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [urlrequest setHTTPMethod:@"POST"];
-    [urlrequest setHTTPBody:jsonData];
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlrequest delegate:self];
-    if (connection) {
-        NSLog(@"Success");
-    }
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        _payPalConfiguration = [[PayPalConfiguration alloc] init];
-        
-        // See PayPalConfiguration.h for details and default values.
-        // Should you wish to change any of the values, you can do so here.
-        // For example, if you wish to accept PayPal but not payment card payments, then add:
-        _payPalConfiguration.acceptCreditCards = NO;
-    }
-    return self;
-}
 
 
 - (void)configureView
@@ -225,5 +176,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"orderDetailSegue"]) {
+       // NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        //NSDate *object = _objects[indexPath.row];
+        //StoreDetail *sd=[storeDetailList objectAtIndex:indexPath.row];
+        //[[segue destinationViewController] setStoreDetail:sd];
+        [[segue destinationViewController] setPromotionDetail:promotionDetail];
+        [[segue destinationViewController] setStoreDetail:storeDetail];
+        [[segue destinationViewController] setIsFromDetailView:YES];
+        
+    }
+}
+
 
 @end

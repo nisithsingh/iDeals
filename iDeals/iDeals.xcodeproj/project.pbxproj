@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F67B3F1191EB43400108E0F /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F67B3F0191EB43400108E0F /* OrderViewController.m */; };
 		3F69212F19142BD2006F3D5E /* StoreDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F69212E19142BD2006F3D5E /* StoreDetail.m */; };
 		E7224945191543C3008FB9DF /* PromotionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7224944191543C3008FB9DF /* PromotionsViewController.m */; };
 		E72249481915496D008FB9DF /* PromotionDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = E72249471915496D008FB9DF /* PromotionDetail.m */; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F67B3EF191EB43400108E0F /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		3F67B3F0191EB43400108E0F /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		3F69212D19142BD2006F3D5E /* StoreDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetail.h; sourceTree = "<group>"; };
 		3F69212E19142BD2006F3D5E /* StoreDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetail.m; sourceTree = "<group>"; };
 		E7224943191543C3008FB9DF /* PromotionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionsViewController.h; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 				3F1A317019167BD7000D819A /* model */,
 				E7A8F24E191370DD003E9A05 /* iPad */,
 				EB96FCCA19120D2F00AE4681 /* Main.storyboard */,
+				3F67B3EF191EB43400108E0F /* OrderViewController.h */,
+				3F67B3F0191EB43400108E0F /* OrderViewController.m */,
 				E7224943191543C3008FB9DF /* PromotionsViewController.h */,
 				E7224944191543C3008FB9DF /* PromotionsViewController.m */,
 				EB96FCC719120D2F00AE4681 /* AppDelegate.h */,
@@ -410,6 +415,7 @@
 				E722499419158EA2008FB9DF /* Reachability.m in Sources */,
 				EB96FCC519120D2F00AE4681 /* main.m in Sources */,
 				E7224945191543C3008FB9DF /* PromotionsViewController.m in Sources */,
+				3F67B3F1191EB43400108E0F /* OrderViewController.m in Sources */,
 				E72249481915496D008FB9DF /* PromotionDetail.m in Sources */,
 				EB96FCD219120D2F00AE4681 /* DetailViewController.m in Sources */,
 				E722498F19158E2F008FB9DF /* ReachabilityModel.m in Sources */,

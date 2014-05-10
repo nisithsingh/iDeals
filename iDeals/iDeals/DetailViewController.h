@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PromotionDetail.h"
 #import "PayPalMobile.h"
-
+#import "StoreDetail.h"
+#import "OrderViewController.h"
 @interface DetailViewController : UIViewController
 
 @property NSInteger indexForSwipe;
@@ -29,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *promotionImageView;
 @property (nonatomic) NSMutableArray *allStorePromos;
 @property (weak, nonatomic) IBOutlet UILabel *swipeTypeLabel;
+@property (weak, nonatomic) StoreDetail  *storeDetail;
+
 - (IBAction)goToLeftPromo:(UISwipeGestureRecognizer *)sender;
 - (IBAction)goToRightPromo:(UISwipeGestureRecognizer *)sender;
 + (NSDateFormatter *) getDateFormatter;
@@ -36,7 +39,9 @@
 - (void)setPromotionDetail:(PromotionDetail *)newPromotionDetail AlongWithAllPromos:(NSMutableArray*) allPromos;
 
 - (IBAction)payButton:(id)sender;
-
+- (void)setPromotionDetail:(StoreDetail *)newStoreDetail;
+@property(strong,nonatomic) PayPalPaymentViewController *paymentViewController;
+@property(strong,nonatomic) OrderViewController *orderViewController;
 @end
 
 

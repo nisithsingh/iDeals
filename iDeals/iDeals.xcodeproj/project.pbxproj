@@ -17,7 +17,8 @@
 		E7A8F24319136AD3003E9A05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24219136AD3003E9A05 /* CoreLocation.framework */; };
 		E7A8F24D19136FA9003E9A05 /* bleepManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24819136FA9003E9A05 /* bleepManager.a */; };
 		E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8F25019137734003E9A05 /* beaconDetection.m */; };
-		EB488DBA1918F2A500BC7CA0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB488DB91918F2A500BC7CA0 /* MapViewController.m */; };
+		EB506A6D191E72060086B029 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB506A68191E72060086B029 /* MapViewController.m */; };
+		EB506A6E191E72060086B029 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = EB506A6B191E72060086B029 /* MapAnnotation.m */; };
 		EB7CA969191D08F100FADC31 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7CA968191D08F100FADC31 /* AVFoundation.framework */; };
 		EB7CA96B191D08FE00FADC31 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7CA96A191D08FE00FADC31 /* SystemConfiguration.framework */; };
 		EB7CA96D191D093000FADC31 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7CA96C191D093000FADC31 /* MessageUI.framework */; };
@@ -56,7 +57,6 @@
 /* Begin PBXFileReference section */
 		3F67B3EF191EB43400108E0F /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
 		3F67B3F0191EB43400108E0F /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
-		3F69212D19142BD2006F3D5E /* StoreDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetail.h; sourceTree = "<group>"; };
 		3F69212E19142BD2006F3D5E /* StoreDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreDetail.m; sourceTree = "<group>"; };
 		E7224943191543C3008FB9DF /* PromotionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromotionsViewController.h; sourceTree = "<group>"; };
 		E7224944191543C3008FB9DF /* PromotionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromotionsViewController.m; sourceTree = "<group>"; };
@@ -73,8 +73,11 @@
 		E7A8F24C19136FA9003E9A05 /* bleepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bleepManager.h; sourceTree = "<group>"; };
 		E7A8F24F19137734003E9A05 /* beaconDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beaconDetection.h; sourceTree = "<group>"; };
 		E7A8F25019137734003E9A05 /* beaconDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beaconDetection.m; sourceTree = "<group>"; };
-		EB488DB81918F2A500BC7CA0 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		EB488DB91918F2A500BC7CA0 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		EB506A68191E72060086B029 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		EB506A69191E72060086B029 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		EB506A6A191E72060086B029 /* StoreDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetail.h; sourceTree = "<group>"; };
+		EB506A6B191E72060086B029 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
+		EB506A6C191E72060086B029 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
 		EB7CA968191D08F100FADC31 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EB7CA96A191D08FE00FADC31 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EB7CA96C191D093000FADC31 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -146,7 +149,7 @@
 		3F1A317019167BD7000D819A /* model */ = {
 			isa = PBXGroup;
 			children = (
-				3F69212D19142BD2006F3D5E /* StoreDetail.h */,
+				EB506A6A191E72060086B029 /* StoreDetail.h */,
 				3F69212E19142BD2006F3D5E /* StoreDetail.m */,
 				E72249461915496D008FB9DF /* PromotionDetail.h */,
 				E72249471915496D008FB9DF /* PromotionDetail.m */,
@@ -232,8 +235,10 @@
 		EB96FCBE19120D2F00AE4681 /* iDeals */ = {
 			isa = PBXGroup;
 			children = (
-				EB488DB81918F2A500BC7CA0 /* MapViewController.h */,
-				EB488DB91918F2A500BC7CA0 /* MapViewController.m */,
+				EB506A68191E72060086B029 /* MapViewController.m */,
+				EB506A69191E72060086B029 /* MapViewController.h */,
+				EB506A6B191E72060086B029 /* MapAnnotation.m */,
+				EB506A6C191E72060086B029 /* MapAnnotation.h */,
 				3F1A317019167BD7000D819A /* model */,
 				E7A8F24E191370DD003E9A05 /* iPad */,
 				EB96FCCA19120D2F00AE4681 /* Main.storyboard */,
@@ -409,8 +414,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F69212F19142BD2006F3D5E /* StoreDetail.m in Sources */,
+				EB506A6E191E72060086B029 /* MapAnnotation.m in Sources */,
 				E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */,
 				EB96FCC919120D2F00AE4681 /* AppDelegate.m in Sources */,
+				EB506A6D191E72060086B029 /* MapViewController.m in Sources */,
 				EB96FCCF19120D2F00AE4681 /* MasterViewController.m in Sources */,
 				E722499419158EA2008FB9DF /* Reachability.m in Sources */,
 				EB96FCC519120D2F00AE4681 /* main.m in Sources */,
@@ -419,7 +426,6 @@
 				E72249481915496D008FB9DF /* PromotionDetail.m in Sources */,
 				EB96FCD219120D2F00AE4681 /* DetailViewController.m in Sources */,
 				E722498F19158E2F008FB9DF /* ReachabilityModel.m in Sources */,
-				EB488DBA1918F2A500BC7CA0 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

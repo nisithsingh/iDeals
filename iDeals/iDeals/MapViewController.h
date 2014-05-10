@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "MapAnnotation.h"
+
+#define METERS_PER_MILE 1609.344
 
 @interface MapViewController : UIViewController{
     
@@ -17,5 +20,11 @@
 
 - (IBAction)backButton:(id)sender;
 @property (nonatomic,retain) IBOutlet MKMapView *mapview;
+@property double latitude;
+@property double longitude;
+@property (nonatomic,strong) NSString* storeName;
+
+
+- (void) setLatitude:(double) lati Longitude:(double)longi AndName:(NSString*) name;
 
 @end

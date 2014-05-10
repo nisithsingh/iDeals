@@ -20,4 +20,6 @@
 @property (nonatomic,strong) NSString *storeLogo;
 @property (nonatomic,strong) NSNumber *minorId;
 @property (nonatomic,strong) NSNumber *majorId;
+@property double latitude;
+@property double longitude;
 @end

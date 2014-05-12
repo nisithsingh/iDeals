@@ -7,7 +7,7 @@
 //
 
 //
-//  DetailViewController.m
+//  MapViewController.m
 //  iDeals
 //
 //  Created by Nisith Singh on 01/05/14.

@@ -235,13 +235,13 @@
 		EB96FCBE19120D2F00AE4681 /* iDeals */ = {
 			isa = PBXGroup;
 			children = (
+				E7A8F24E191370DD003E9A05 /* iPad */,
+				3F1A317019167BD7000D819A /* model */,
 				EB506A68191E72060086B029 /* MapViewController.m */,
+				EB96FCCA19120D2F00AE4681 /* Main.storyboard */,
 				EB506A69191E72060086B029 /* MapViewController.h */,
 				EB506A6B191E72060086B029 /* MapAnnotation.m */,
 				EB506A6C191E72060086B029 /* MapAnnotation.h */,
-				3F1A317019167BD7000D819A /* model */,
-				E7A8F24E191370DD003E9A05 /* iPad */,
-				EB96FCCA19120D2F00AE4681 /* Main.storyboard */,
 				3F67B3EF191EB43400108E0F /* OrderViewController.h */,
 				3F67B3F0191EB43400108E0F /* OrderViewController.m */,
 				E7224943191543C3008FB9DF /* PromotionsViewController.h */,

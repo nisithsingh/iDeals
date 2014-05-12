@@ -11,6 +11,7 @@
 #import "PayPalMobile.h"
 #import "StoreDetail.h"
 #import "OrderViewController.h"
+@class OrderViewController;
 @interface DetailViewController : UIViewController
 
 @property NSInteger indexForSwipe;
@@ -27,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *EndDateLabel;
 @property (strong, nonatomic) PromotionDetail *promotionDetail;
+- (IBAction)homeButtonClicked:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *promotionImageView;
 @property (nonatomic) NSMutableArray *allStorePromos;
 @property (weak, nonatomic) IBOutlet UILabel *swipeTypeLabel;

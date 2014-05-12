@@ -11,6 +11,7 @@
 #import "StoreDetail.h"
 #import "PromotionDetail.h"
 #import "PayPalMobile.h"
+
 @interface OrderViewController : UIViewController<PayPalPaymentDelegate>{
     
    
@@ -28,6 +29,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *amountPaidLabel;
 @property (nonatomic,strong,readwrite) PayPalConfiguration *payPalConfiguration;
 @property  BOOL isFromDetailView;
-//@property (nonatomic,strong,readwrite) PayPalPayment *payment;
-//@property(strong,nonatomic) PayPalPaymentViewController *paymentViewController;
+@property  BOOL ispaymentCanceled;
 @end

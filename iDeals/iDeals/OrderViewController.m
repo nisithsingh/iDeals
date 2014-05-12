@@ -2,12 +2,12 @@
 //  MapViewController.m
 //  iDeals
 //
-//  Created by Nisith Singh on 06/05/14.
+//  Created by Milan Ashara on 06/05/14.
 //  Copyright (c) 2014 Team6. All rights reserved.
 //
 
 //
-//  DetailViewController.m
+//  OrderViewController
 //  iDeals
 //
 //  Created by Nisith Singh on 01/05/14.
@@ -21,15 +21,12 @@
 @end
 
 @implementation OrderViewController
-@synthesize orderDateLabel,orderIdLabel,promoDescLabel,promotionNameLabel,storeIdLabel,orderId,storeDetail,promotionDetail,amountPaidLabel,isFromDetailView;
+@synthesize orderDateLabel,orderIdLabel,promoDescLabel,promotionNameLabel,storeIdLabel,orderId,storeDetail,promotionDetail,amountPaidLabel,isFromDetailView,ispaymentCanceled;
 NSString* const postPaymentSuccessUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/success/";
 NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/getorderid/";
 
 
-/*-(void) setOrderId:(NSString *)neworderId{
-    self.orderId=neworderId;
-   
-}*/
+
 
 - (void)viewDidLoad
 {
@@ -37,56 +34,81 @@ NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/ge
     if (!orderId) {
       //  [self configureView];
     }
-    
-}
--(void) viewDidAppear:(BOOL)animated{
-    
     // Create a PayPalPayment
+    
+   
+    
     if(isFromDetailView == YES)
     {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.view.hidden=YES;
+            
+        });
         
-   
-    PayPalPayment *payment = [[PayPalPayment alloc] init];
-    
-    // Amount, currency, and description
-    
-    //payment.currencyCode = @"SGD";
-    //payment.shortDescription = @"Happy 7/11 Day";
-    
-    // payment.amount = self.DiscountedPriceLabel.text ;
-    float discountedPrice=([promotionDetail.promotionActualPrice floatValue] - (([promotionDetail.promotionDiscount floatValue] * [promotionDetail.promotionActualPrice floatValue])/(float)100));
-    payment.currencyCode = @"SGD";
-    NSString *dp=[NSString stringWithFormat:@"%.02f",discountedPrice];
-    
-    payment.amount = [[NSDecimalNumber alloc] initWithFloat:[dp floatValue]];
-    payment.shortDescription = promotionDetail.promotionDescription;
-    NSLog(@"Promotion Detail View : %@",promotionDetail.promotionDescription);
-    
-    // Use the intent property to indicate that this is a "sale" payment,
-    // meaning combined Authorization + Capture. To perform Authorization only,
-    // and defer Capture to your server, use PayPalPaymentIntentAuthorize.
-    payment.intent = PayPalPaymentIntentSale;
-    
-    // Check whether payment is processable.
-    if (!payment.processable) {
-        // If, for example, the amount was negative or the shortDescription was empty, then
-        // this payment would not be processable. You would want to handle that here.
-    }
-    
-    
-    PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment
-                                                                   configuration:self.payPalConfiguration
-                                                                        delegate:self];
-    
-    // Present the PayPalPaymentViewController.
-    
-    [self presentViewController:paymentViewController animated:YES completion:nil];
+        PayPalPayment *payment = [[PayPalPayment alloc] init];
+        
+        // Amount, currency, and description
+        
+        //payment.currencyCode = @"SGD";
+        //payment.shortDescription = @"Happy 7/11 Day";
+        
+        // payment.amount = self.DiscountedPriceLabel.text ;
+        float discountedPrice=([promotionDetail.promotionActualPrice floatValue] - (([promotionDetail.promotionDiscount floatValue] * [promotionDetail.promotionActualPrice floatValue])/(float)100));
+        payment.currencyCode = @"SGD";
+        NSString *dp=[NSString stringWithFormat:@"%.02f",discountedPrice];
+        
+        payment.amount = [[NSDecimalNumber alloc] initWithFloat:[dp floatValue]];
+        payment.shortDescription = promotionDetail.promotionDescription;
+        NSLog(@"Promotion Detail View : %@",promotionDetail.promotionDescription);
+        
+        // Use the intent property to indicate that this is a "sale" payment,
+        // meaning combined Authorization + Capture. To perform Authorization only,
+        // and defer Capture to your server, use PayPalPaymentIntentAuthorize.
+        payment.intent = PayPalPaymentIntentSale;
+        
+        // Check whether payment is processable.
+        if (!payment.processable) {
+            // If, for example, the amount was negative or the shortDescription was empty, then
+            // this payment would not be processable. You would want to handle that here.
+        }
+        
+        
+        PayPalPaymentViewController *paymentViewController = [[PayPalPaymentViewController alloc] initWithPayment:payment
+                                                                                                    configuration:self.payPalConfiguration
+                                                                                                         delegate:self];
+        
+        // Present the PayPalPaymentViewController.
+        
+        [self presentViewController:paymentViewController animated:YES completion:nil];
         isFromDetailView=NO;
     }
     else
     {
-        [self configureView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.view.hidden=NO;
+            
+        });
+        // [self configureView];
     }
+    
+}
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:true];
+    if (ispaymentCanceled==YES) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.view.hidden=NO;
+            
+        });
+        NSString * storyboardName = @"Main";
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+        UITableViewController * vc = [storyboard instantiateInitialViewController];
+        ispaymentCanceled=NO;
+        [self presentViewController:vc animated:YES completion:nil];
+        
+        return;
+    }
+    
+
 }
 #pragma mark - PayPalPaymentDelegate methods
 
@@ -104,11 +126,25 @@ NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/ge
 
 - (void)payPalPaymentDidCancel:(PayPalPaymentViewController *)paymentViewController {
     // The payment was canceled; dismiss the PayPalPaymentViewController.
+    
+    self.ispaymentCanceled=YES;
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+  /*  NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UITableViewController * vc = [storyboard instantiateInitialViewController];
+    ispaymentCanceled=NO;
+    [self presentViewController:vc animated:YES completion:nil];
+    
+    return;*/
+
+    
 }
 
-// SomeViewController.m
 
+
+
+// SomeViewController.m
 - (void)verifyCompletedPayment:(PayPalPayment *)completedPayment {
     /*
      * Saving details on Server
@@ -138,6 +174,7 @@ NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/ge
         NSLog(@"Success Payment");
         NSString *paymentId=[results[@"response"] objectForKey:@"id"];
         [self getOrderID:paymentId];
+         [self configureView];
         
     }
     else{
@@ -194,9 +231,10 @@ NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/ge
 - (void)configureView
 {
     orderIdLabel.text=orderId;
-    storeIdLabel.text=[storeDetail.storeId stringValue];
+    storeIdLabel.text=storeDetail.storeName;
     promotionNameLabel.text=promotionDetail.promotionName;
     promoDescLabel.text=promotionDetail.promotionDescription;
+    promoDescLabel.numberOfLines=0;
     NSDate *date=[[NSDate alloc] init];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd':'HH:mm"];

@@ -186,10 +186,19 @@
         //[[segue destinationViewController] setStoreDetail:sd];
         [[segue destinationViewController] setPromotionDetail:promotionDetail];
         [[segue destinationViewController] setStoreDetail:storeDetail];
+        //[[segue destinationViewController] setDetaiViewController:self] ;
         [[segue destinationViewController] setIsFromDetailView:YES];
         
     }
 }
 
 
+- (IBAction)homeButtonClicked:(id)sender {
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UITableViewController * vc = [storyboard instantiateInitialViewController];
+    
+    [self presentViewController:vc animated:YES completion:nil];
+
+}
 @end

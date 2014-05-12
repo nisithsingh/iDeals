@@ -15,7 +15,6 @@
 
 @interface MasterViewController : UITableViewController <CLLocationManagerDelegate, bleepManagerDelegate>    
 
-//@property (nonatomic, assign) NSMutableArray *foundBeacons;
 @property(nonatomic, strong) CLLocationManager *locationManager;
 @property(nonatomic,strong) NSMutableArray *storeDetailList;
 @property(nonatomic,strong) ReachabilityModel *reachablity;

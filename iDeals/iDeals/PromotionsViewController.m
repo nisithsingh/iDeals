@@ -24,8 +24,7 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
     if (storeDetail != newDetailItem) {
         storeDetail = newDetailItem;
         NSLog(@"Store Name in Promotion View :%@",storeDetail.storeName);
-        // Update the view.
-      //  [self configureView];
+    
         if(!storeDetail.promotionDetails)
         {
             storeDetail.promotionDetails=[[NSMutableArray alloc]init];
@@ -50,20 +49,9 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
     
     
     [super viewDidLoad];
-    
-   
-    
-	// Do any additional setup after loading the view, typically from a nib.
-    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    
-    //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    //self.navigationItem.rightBarButtonItem = addButton;
+	
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    
- 
-    
-   // [self fetchPromotionDetail:storeDetail.storeId];
-    
+   
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
     
@@ -97,18 +85,7 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
     // Dispose of any resources that can be recreated.
 }
 
-/*- (void)insertNewObject:(id)sender
-{
-    if (!promotionList) {
-        promotionList = [[NSMutableArray alloc] init];
-    }
-    
-   
-    
-    [promotionList insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}*/
+
 
 #pragma mark - Table View
 
@@ -231,12 +208,10 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
                  promotion.promotionName=[promotionDictionay objectForKey:@"promotion_name"] ;
                  promotion.promotionActualPrice=[promotionDictionay objectForKey:@"actual_price"];
                  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                 //[dateFormatter setDateStyle:NSDateFormatterFullStyle];
-                // [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
-                 [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+                               [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
 
                  promotion.promotionStartDate=[dateFormatter dateFromString:[promotionDictionay objectForKey:@"start_date"]];
-                 //promotion.promotionStartDate=[promotionDictionay objectForKey:@"start_date"];
+                 
                  promotion.promotionEndDate=[dateFormatter dateFromString:[promotionDictionay objectForKey:@"end_date"]] ;
                  promotion.promotionDiscount=[promotionDictionay objectForKey:@"discount"];
                  promotion.promotionImageLink=[promotionDictionay objectForKey:@"image_link"];
@@ -254,8 +229,7 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
                  [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
              }
-            //NSDictionary *dictionary = [storeDetails objectAtIndex:0];
-     
+             
              
      
          }
@@ -284,9 +258,9 @@ NSString* const iDealsPromotionBaseUrl=@"https://apex.oracle.com/pls/apex/viczsa
 {
     if ([[segue identifier] isEqualToString:@"promotionDetailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        //NSDate *object = _objects[indexPath.row];
+      
         PromotionDetail *promotionDetail=[storeDetail.promotionDetails objectAtIndex:indexPath.row];
-        //[[segue destinationViewController] setPromotionDetail:promotionDetail ];
+       
         [[segue destinationViewController] setPromotionDetail:promotionDetail AlongWithAllPromos:storeDetail.promotionDetails];
          [[segue destinationViewController] setStoreDetail:storeDetail];
     }

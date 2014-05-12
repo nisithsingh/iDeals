@@ -32,7 +32,7 @@ NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/ge
 {
     [super viewDidLoad];
     if (!orderId) {
-      //  [self configureView];
+    
     }
     // Create a PayPalPayment
     
@@ -48,11 +48,7 @@ NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/ge
         PayPalPayment *payment = [[PayPalPayment alloc] init];
         
         // Amount, currency, and description
-        
-        //payment.currencyCode = @"SGD";
-        //payment.shortDescription = @"Happy 7/11 Day";
-        
-        // payment.amount = self.DiscountedPriceLabel.text ;
+
         float discountedPrice=([promotionDetail.promotionActualPrice floatValue] - (([promotionDetail.promotionDiscount floatValue] * [promotionDetail.promotionActualPrice floatValue])/(float)100));
         payment.currencyCode = @"SGD";
         NSString *dp=[NSString stringWithFormat:@"%.02f",discountedPrice];
@@ -88,7 +84,7 @@ NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/ge
             self.view.hidden=NO;
             
         });
-        // [self configureView];
+       
     }
     
 }

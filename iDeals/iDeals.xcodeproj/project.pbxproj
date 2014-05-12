@@ -16,7 +16,6 @@
 		E722499419158EA2008FB9DF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E722499319158EA2008FB9DF /* Reachability.m */; };
 		E7A8F24319136AD3003E9A05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24219136AD3003E9A05 /* CoreLocation.framework */; };
 		E7A8F24D19136FA9003E9A05 /* bleepManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8F24819136FA9003E9A05 /* bleepManager.a */; };
-		E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A8F25019137734003E9A05 /* beaconDetection.m */; };
 		EB506A6D191E72060086B029 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB506A68191E72060086B029 /* MapViewController.m */; };
 		EB506A6E191E72060086B029 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = EB506A6B191E72060086B029 /* MapAnnotation.m */; };
 		EB7CA969191D08F100FADC31 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB7CA968191D08F100FADC31 /* AVFoundation.framework */; };
@@ -71,8 +70,6 @@
 		E7A8F24819136FA9003E9A05 /* bleepManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = bleepManager.a; sourceTree = "<group>"; };
 		E7A8F24B19136FA9003E9A05 /* bleepBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bleepBeacon.h; sourceTree = "<group>"; };
 		E7A8F24C19136FA9003E9A05 /* bleepManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bleepManager.h; sourceTree = "<group>"; };
-		E7A8F24F19137734003E9A05 /* beaconDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beaconDetection.h; sourceTree = "<group>"; };
-		E7A8F25019137734003E9A05 /* beaconDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beaconDetection.m; sourceTree = "<group>"; };
 		EB506A68191E72060086B029 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		EB506A69191E72060086B029 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		EB506A6A191E72060086B029 /* StoreDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreDetail.h; sourceTree = "<group>"; };
@@ -250,8 +247,6 @@
 				EB96FCC819120D2F00AE4681 /* AppDelegate.m */,
 				EB96FCCD19120D2F00AE4681 /* MasterViewController.h */,
 				EB96FCCE19120D2F00AE4681 /* MasterViewController.m */,
-				E7A8F24F19137734003E9A05 /* beaconDetection.h */,
-				E7A8F25019137734003E9A05 /* beaconDetection.m */,
 				EB96FCD019120D2F00AE4681 /* DetailViewController.h */,
 				EB96FCD119120D2F00AE4681 /* DetailViewController.m */,
 				EB96FCD319120D2F00AE4681 /* Images.xcassets */,
@@ -415,7 +410,6 @@
 			files = (
 				3F69212F19142BD2006F3D5E /* StoreDetail.m in Sources */,
 				EB506A6E191E72060086B029 /* MapAnnotation.m in Sources */,
-				E7A8F25119137734003E9A05 /* beaconDetection.m in Sources */,
 				EB96FCC919120D2F00AE4681 /* AppDelegate.m in Sources */,
 				EB506A6D191E72060086B029 /* MapViewController.m in Sources */,
 				EB96FCCF19120D2F00AE4681 /* MasterViewController.m in Sources */,

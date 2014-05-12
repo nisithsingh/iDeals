@@ -41,13 +41,6 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
 {
   
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    //self.navigationItem.rightBarButtonItem = addButton;
-    
-  
     [reachablity isReachable];
     
     [[bleepManager sharedInstance] setDelegate:self];
@@ -65,15 +58,6 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     // Dispose of any resources that can be recreated.
 }
 
-/*- (void)insertNewObject:(id)sender
-{
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}*/
 
 #pragma mark - Table View
 
@@ -124,18 +108,12 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
 -(void) mapButtonClicked:(id)sender{
     NSLog(@"mapButtonClicked");
    
-  //  MapViewController *nextViewController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
-    // and push it onto the 'navigation stack'
-    
+   
     NSString * storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
     UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"mapViewController"];
     [self presentViewController:vc animated:YES completion:nil];
-   //[self.navigationController pushViewController:nextViewController animated:YES];
-   
-    //[self.navigationController pushNavigationController:nextViewController animated:YES];
-    // and release
-    //[nextViewController release];
+ 
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -150,7 +128,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
         [_objects removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+      
     }
 }
 
@@ -259,8 +237,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
 
 - (void)beaconManager:(bleepManager *)manager rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error{
     NSLog(@"error: %@", [error description]);
-    //textView.text = [[NSString stringWithFormat:@"error: %@\n", [error description]]stringByAppendingString:textView.text];
-}
+  }
 
 
 - (IBAction)startTracking:(id)sender{
@@ -270,17 +247,15 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     [[bleepManager sharedInstance] setUUID:[k_UUID uppercaseString]];
     [[bleepManager sharedInstance] startBleepDiscoveryForRegion];
 	NSLog(@"bleep! Start monitoring");
-    //textView.text  = [[NSString stringWithFormat:@"bleep! Start monitoring: %@\n", udid.text] stringByAppendingString:textView.text];
+ 
    
 }
 
 - (IBAction)stopTracking:(id)sender{
-    //[udid setTextColor:[UIColor blackColor]];
-    //[udid setEnabled:TRUE];
+  
     [[bleepManager sharedInstance] stopBleepDiscovery];
 	NSLog(@"bleep! Stop monitoring");
-    //textView.text  = [@"bleep! Stop monitoring\n" stringByAppendingString:textView.text];
-    
+  
 }
 
 
@@ -325,18 +300,5 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
      }];
 }
 
--(void) insertRow:(StoreDetail *) storeDetail
-{
-   
-    //s.storeName=[dictionary objectForKey:@"store_name"];
-    //s.address=[dictionary objectForKey:@"address"];
-    NSLog(@"Store Name : %@",storeDetail.storeName);
-    
-    [storeDetailList insertObject:storeDetail atIndex:0];
-    
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
 
 @end

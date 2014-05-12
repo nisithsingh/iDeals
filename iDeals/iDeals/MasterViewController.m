@@ -202,7 +202,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
             [self fetchStoreDetail:beacon.proximityUUID.UUIDString withMinorID:beacon.minor withMajor:beacon.major];
         }
     }
-        [[bleepManager sharedInstance] stopBleepDiscovery];
+      //  [[bleepManager sharedInstance] stopBleepDiscovery];
 }
 
 - (void)beaconManager:(bleepManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLBeaconRegion *)region
@@ -224,6 +224,11 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
 		UILocalNotification *notification = [[UILocalNotification alloc] init];
 		notification.alertBody = @"Determined state out, stopped ranging";
 		[[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+        
+        //remove row
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [storeDetailList removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}
 	else
 	{
@@ -246,6 +251,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     //[udid setEnabled:FALSE];
     [[bleepManager sharedInstance] setUUID:[k_UUID uppercaseString]];
     [[bleepManager sharedInstance] startBleepDiscoveryForRegion];
+    
 	NSLog(@"bleep! Start monitoring");
  
    
@@ -299,6 +305,9 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
          }
      }];
 }
-
+-(void) viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:true];
+     [[bleepManager sharedInstance] stopBleepDiscovery];
+}
 
 @end

@@ -52,7 +52,7 @@ NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/ge
         float discountedPrice=([promotionDetail.promotionActualPrice floatValue] - (([promotionDetail.promotionDiscount floatValue] * [promotionDetail.promotionActualPrice floatValue])/(float)100));
         payment.currencyCode = @"SGD";
         NSString *dp=[NSString stringWithFormat:@"%.02f",discountedPrice];
-        
+        NSLog(@"payment amount paypal : %@",dp);
         payment.amount = [[NSDecimalNumber alloc] initWithFloat:[dp floatValue]];
         payment.shortDescription = promotionDetail.promotionDescription;
         NSLog(@"Promotion Detail View : %@",promotionDetail.promotionDescription);
@@ -80,6 +80,7 @@ NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/ge
     }
     else
     {
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             self.view.hidden=NO;
             
@@ -90,6 +91,14 @@ NSString* const orderUrl=@"https://apex.oracle.com/pls/apex/viczsaurav/iDeals/ge
 }
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:true];
+    
+    if(isFromDetailView == NO)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+        self.view.hidden=NO;
+        
+        });
+    }
     if (ispaymentCanceled==YES) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.view.hidden=NO;

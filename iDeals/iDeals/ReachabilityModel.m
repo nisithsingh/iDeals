@@ -138,21 +138,18 @@
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     NSString *stateString = nil;
-    switch(bluetoothManager.state)
-    {
-        //case CBCentralManagerStateUnsupported: stateString = @"The platform doesn't support Bluetooth Low Energy."; break;
-        case CBCentralManagerStatePoweredOff: stateString = @"Bluetooth is currently powered off."; break;
-        case CBCentralManagerStatePoweredOn: stateString = @"Bluetooth is currently powered on and available to use."; break;
-        default: stateString = @"Please check bluetooth connection."; break;
-    }
-    //NSLog(@"%@",stateString);
-    UIAlertView *alert = [[UIAlertView alloc]
+    if (bluetoothManager.state == CBCentralManagerStatePoweredOn) {
+        stateString = @"Bluetooth is Working properly.";
+    } else {
+        stateString = @"Please check bluetooth connection.";
+        UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle:@"Alert"
                           message:stateString
                           delegate:self
                           cancelButtonTitle:@"Ok"
                           otherButtonTitles:nil];
-     [alert show];
+        [alert show];
+    }
 }
 
 @end

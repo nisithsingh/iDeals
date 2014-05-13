@@ -38,9 +38,11 @@
 		EB96FCE519120D3000AE4681 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB96FCE319120D3000AE4681 /* InfoPlist.strings */; };
 		EB96FCE719120D3000AE4681 /* iDealsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB96FCE619120D3000AE4681 /* iDealsTests.m */; };
 		EBE77A281918BAB600F7A519 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBE77A221918BAB600F7A519 /* libPayPalMobile.a */; };
+		EBF7769519222C5F004D0453 /* paypal_checkout_button.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF7769419222C5F004D0453 /* paypal_checkout_button.png */; };
+		EBF7769819222E56004D0453 /* ideals_640_960.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF7769619222E55004D0453 /* ideals_640_960.png */; };
+		EBF7769919222E56004D0453 /* ideals_640_1136.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF7769719222E56004D0453 /* ideals_640_1136.png */; };
 		EBFF7C24191CEF3D00962BAD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EBFF7C21191CEF3D00962BAD /* logo.png */; };
 		EBFF7C25191CEF3D00962BAD /* swipePic.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EBFF7C22191CEF3D00962BAD /* swipePic.PNG */; };
-		EBFF7C26191CEF3D00962BAD /* paypal-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EBFF7C23191CEF3D00962BAD /* paypal-logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,15 +102,21 @@
 		EB96FCE219120D3000AE4681 /* iDealsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDealsTests-Info.plist"; sourceTree = "<group>"; };
 		EB96FCE419120D3000AE4681 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB96FCE619120D3000AE4681 /* iDealsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iDealsTests.m; sourceTree = "<group>"; };
+		EBE3D52019221E790010ED17 /* ideals_120Px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ideals_120Px.png; path = images/ideals_120Px.png; sourceTree = "<group>"; };
+		EBE3D52119221F500010ED17 /* ideals1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ideals1.png; path = ../ideals1.png; sourceTree = "<group>"; };
+		EBE3D522192220DF0010ED17 /* ideals_76Px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ideals_76Px.png; path = images/ideals_76Px.png; sourceTree = "<group>"; };
+		EBE3D523192221EE0010ED17 /* ideals1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ideals1.png; path = ../ideals1.png; sourceTree = "<group>"; };
 		EBE77A221918BAB600F7A519 /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMobile.a; sourceTree = "<group>"; };
 		EBE77A231918BAB600F7A519 /* PayPalConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalConfiguration.h; sourceTree = "<group>"; };
 		EBE77A241918BAB600F7A519 /* PayPalFuturePaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalFuturePaymentViewController.h; sourceTree = "<group>"; };
 		EBE77A251918BAB600F7A519 /* PayPalMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalMobile.h; sourceTree = "<group>"; };
 		EBE77A261918BAB600F7A519 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
 		EBE77A271918BAB600F7A519 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
+		EBF7769419222C5F004D0453 /* paypal_checkout_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paypal_checkout_button.png; path = images/paypal_checkout_button.png; sourceTree = "<group>"; };
+		EBF7769619222E55004D0453 /* ideals_640_960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ideals_640_960.png; sourceTree = "<group>"; };
+		EBF7769719222E56004D0453 /* ideals_640_1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ideals_640_1136.png; sourceTree = "<group>"; };
 		EBFF7C21191CEF3D00962BAD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = images/logo.png; sourceTree = "<group>"; };
 		EBFF7C22191CEF3D00962BAD /* swipePic.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = swipePic.PNG; path = images/swipePic.PNG; sourceTree = "<group>"; };
-		EBFF7C23191CEF3D00962BAD /* paypal-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paypal-logo.png"; path = "images/paypal-logo.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +266,12 @@
 		EB96FCBF19120D2F00AE4681 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EBF7769619222E55004D0453 /* ideals_640_960.png */,
+				EBF7769719222E56004D0453 /* ideals_640_1136.png */,
+				EBE3D523192221EE0010ED17 /* ideals1.png */,
+				EBE3D522192220DF0010ED17 /* ideals_76Px.png */,
+				EBE3D52119221F500010ED17 /* ideals1.png */,
+				EBE3D52019221E790010ED17 /* ideals_120Px.png */,
 				EBFF7C20191CEF1F00962BAD /* images */,
 				EB96FCC019120D2F00AE4681 /* iDeals-Info.plist */,
 				EB96FCC119120D2F00AE4681 /* InfoPlist.strings */,
@@ -301,9 +315,9 @@
 		EBFF7C20191CEF1F00962BAD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EBF7769419222C5F004D0453 /* paypal_checkout_button.png */,
 				EBFF7C21191CEF3D00962BAD /* logo.png */,
 				EBFF7C22191CEF3D00962BAD /* swipePic.PNG */,
-				EBFF7C23191CEF3D00962BAD /* paypal-logo.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -384,12 +398,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF7769519222C5F004D0453 /* paypal_checkout_button.png in Resources */,
 				EBFF7C24191CEF3D00962BAD /* logo.png in Resources */,
 				EB96FCD419120D2F00AE4681 /* Images.xcassets in Resources */,
+				EBF7769919222E56004D0453 /* ideals_640_1136.png in Resources */,
 				EB96FCC319120D2F00AE4681 /* InfoPlist.strings in Resources */,
-				EBFF7C26191CEF3D00962BAD /* paypal-logo.png in Resources */,
 				EB96FCCC19120D2F00AE4681 /* Main.storyboard in Resources */,
 				EBFF7C25191CEF3D00962BAD /* swipePic.PNG in Resources */,
+				EBF7769819222E56004D0453 /* ideals_640_960.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,12 +566,10 @@
 		EB96FCEB19120D3000AE4681 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDeals/iDeals-Prefix.pch";
 				INFOPLIST_FILE = "iDeals/iDeals-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/student1/Documents/A0119930/iDeals/bleepManager,
@@ -570,12 +584,10 @@
 		EB96FCEC19120D3000AE4681 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDeals/iDeals-Prefix.pch";
 				INFOPLIST_FILE = "iDeals/iDeals-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/student1/Documents/A0119930/iDeals/bleepManager,

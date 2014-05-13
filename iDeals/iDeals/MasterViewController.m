@@ -19,19 +19,22 @@
 @interface MasterViewController () {
     NSMutableArray *_objects;
     NSMutableArray *foundBeacons;
+   
 }
 @end
-
+// static    NSMutableArray *storeDetailList;
 @implementation MasterViewController
-@synthesize locationManager,storeDetailList,reachablity;
-NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeals/getstore/";
-
+@synthesize locationManager,reachablity,storeDetailList;
+NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeals/getstores/";
+NSString* const iDealsBaseUrlwithMajorMinor=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeals/getstore/";
 - (void)awakeFromNib
 {
     
     [super awakeFromNib];
     foundBeacons = [[NSMutableArray alloc] init];
+    if(storeDetailList==nil)
     storeDetailList = [[NSMutableArray alloc] init];
+    //storeDetailList=[MasterViewController geStoreDetailList];
     reachablity=[[ReachabilityModel alloc] init];
     
     
@@ -47,10 +50,15 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     [self startTracking:self];
     
     /* insert defaul test row */
-    [self fetchStoreDetail:@"3AE96580-33DB-458B-8024-2B3C63E0E920" withMinorID:0 withMajor:0];
-   
+   // [self fetchStoreDetail:@"3AE96580-33DB-458B-8024-2B3C63E0E920" withMinorID:[NSNumber numberWithInt:1] withMajor:[NSNumber numberWithInt:1]];
+   //[self fetchStoreDetail:@"3AE96580-33DB-458B-8024-2B3C63E0E920" withMinorID:nil withMajor:nil];
 }
-
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:true];
+    //[storeDetailList removeAllObjects];
+    //[foundBeacons removeAllObjects];
+   // [self.tableView reloadData];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -111,7 +119,14 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
    
     NSString * storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
-    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"mapViewController"];
+    MapViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"mapViewController"];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    //NSDate *object = _objects[indexPath.row];
+    StoreDetail *sd=[storeDetailList objectAtIndex:indexPath.row];
+    
+    [vc setLatitude:sd.latitude Longitude:sd.longitude AndName:sd.storeName];
+    
     [self presentViewController:vc animated:YES completion:nil];
  
 }
@@ -189,7 +204,7 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
         BOOL exist=false;
         for(bleepBeacon *b in foundBeacons)
         {
-            if([b.proximityUUID.UUIDString isEqualToString:beacon.proximityUUID.UUIDString ])
+            if([b.proximityUUID.UUIDString isEqualToString:beacon.proximityUUID.UUIDString] && b.major==beacon.major && b.minor == beacon.minor)
             {
                 exist=true;
                 break;
@@ -226,9 +241,14 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
 		[[UIApplication sharedApplication] presentLocalNotificationNow:notification];
         
         //remove row
+        
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        
+        if(indexPath.row!=0)    // There should be rows to delete
+        {
         [storeDetailList removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
 	}
 	else
 	{
@@ -268,8 +288,18 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
 /* Web Service Request for store details*/
 - (void)fetchStoreDetail:(NSString *)beaconId withMinorID:(NSNumber *)minorID withMajor:(NSNumber *)majorID
 {
+   
+    
     NSString *urlString = [iDealsBaseUrl stringByAppendingString:beaconId];
     
+    if(majorID != nil && minorID != nil)
+    {
+        urlString=[iDealsBaseUrlwithMajorMinor stringByAppendingString:beaconId];
+        urlString=[urlString stringByAppendingString:@","];
+        urlString=[urlString stringByAppendingString:[majorID stringValue]];
+        urlString=[urlString stringByAppendingString:@","];
+        urlString=[urlString stringByAppendingString:[minorID stringValue]];
+    }
     NSLog(@"URL : %@",urlString);
     
     NSURL *url = [NSURL URLWithString: urlString];
@@ -281,6 +311,8 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
      {
          if (data.length > 0 && connectionError == nil)
          {
+             
+            
              NSDictionary *results = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:0
                                                                         error:NULL];
@@ -294,13 +326,27 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
                  storeDetail.storeId=[storeDictionay objectForKey:@"store_id"];
                  storeDetail.storePhoneNumber=[storeDictionay objectForKey:@"store_phone"];
                  storeDetail.storeLogo=[storeDictionay objectForKey:@"store_logo"];
+                 storeDetail.latitude= [[storeDictionay objectForKey:@"latitude"] floatValue];
+                 storeDetail.longitude=[[storeDictionay objectForKey:@"longitude"] floatValue];
                  NSLog(@"Store Name : %@",storeDetail.storeName);
+                 
+                 BOOL exist=false;
+                 for(StoreDetail *sd in storeDetailList)
+                 {
+                     if(sd.storeId == storeDetail.storeId)
+                     {
+                         exist=true;
+                         break;
+                     }
+                 }
+                 if(!exist)
+                 {
+                     [storeDetailList insertObject:storeDetail atIndex:0];
              
-                 [storeDetailList insertObject:storeDetail atIndex:0];
              
-             
-                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-                 [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                 }
              }
          }
      }];
@@ -309,5 +355,21 @@ NSString* const iDealsBaseUrl=@"http://apex.oracle.com/pls/apex/viczsaurav/iDeal
     [super viewDidDisappear:true];
      [[bleepManager sharedInstance] stopBleepDiscovery];
 }
-
+-(NSMutableArray*) storeDetailStaticArray
+{
+    static NSMutableArray* theArray = nil;
+    if (theArray == nil)
+    {
+        theArray = [[NSMutableArray alloc] init];
+    }
+    
+    return theArray;
+}
++(NSMutableArray *) geStoreDetailList{
+    if(storeDetailListStatic==nil)
+    {
+        storeDetailListStatic=[[NSMutableArray alloc]init];
+    }
+    return storeDetailListStatic;
+}
 @end

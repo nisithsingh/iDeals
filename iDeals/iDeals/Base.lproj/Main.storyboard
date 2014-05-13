@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-419" y="64"/>
+            <point key="canvasLocation" x="-275" y="-8"/>
         </scene>
         <!--Master View Controller - Master-->
         <scene sceneID="VgW-fR-Quf">
@@ -70,7 +70,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="64"/>
+            <point key="canvasLocation" x="121" y="-8"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="ve6-ng-RKs">
@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Zk-xx-FBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="-533"/>
+            <point key="canvasLocation" x="-79" y="-653"/>
         </scene>
         <!--Order View Controller-->
         <scene sceneID="8ki-I6-HKx">
@@ -252,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sav-kT-8D9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="820" y="-518"/>
+            <point key="canvasLocation" x="1462" y="-653"/>
         </scene>
         <!--Promotions View Controller - Promotions-->
         <scene sceneID="bOn-di-rsz">
@@ -317,7 +317,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaR-BP-LSl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="341" y="556"/>
+            <point key="canvasLocation" x="546" y="-8"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="ueW-Dq-57C">
@@ -416,7 +416,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLD-RX-Qyw">
                                 <rect key="frame" x="2" y="248" width="103" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Pay With PayPal" image="paypal-logo.png">
+                                <state key="normal" title="Pay With PayPal" image="paypal_checkout_button.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -424,7 +424,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZA-zE-pjd">
-                                <rect key="frame" x="105" y="475" width="111" height="52"/>
+                                <rect key="frame" x="105" y="441" width="111" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="swipePic.PNG">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -456,7 +456,6 @@
                     <connections>
                         <outlet property="DiscountedPriceLabel" destination="hzj-Cx-m7J" id="ONo-kg-JkO"/>
                         <outlet property="EndDateLabel" destination="HXf-kF-f6x" id="r5k-xX-u2W"/>
-                        <outlet property="PayPalButton" destination="ZLD-RX-Qyw" id="N5K-3L-9VZ"/>
                         <outlet property="actualPriceLabel" destination="Ork-8a-KKO" id="CDF-Lk-Q6k"/>
                         <outlet property="discountLabel" destination="tPJ-lH-7UO" id="TPN-AA-EbP"/>
                         <outlet property="promotionImageView" destination="NSL-mD-Sw3" id="dSx-Ph-6gA"/>
@@ -476,27 +475,11 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="685" y="382"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ztO-i5-aGm">
-            <objects>
-                <navigationController storyboardIdentifier="nvc" definesPresentationContext="YES" id="ZGI-LS-l0l" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9U5-mV-koA">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="8ks-cq-zhk" kind="push" id="vQp-dN-5f0"/>
-                        <segue destination="xdv-op-NvG" kind="push" id="TX9-Yu-TKX"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yeh-69-xxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="572" y="56"/>
+            <point key="canvasLocation" x="1023" y="-300"/>
         </scene>
     </scenes>
     <resources>
-        <image name="paypal-logo.png" width="300" height="155"/>
+        <image name="paypal_checkout_button.png" width="162" height="80"/>
         <image name="swipePic.PNG" width="464" height="326"/>
         <image name="tick" width="256" height="256"/>
     </resources>
@@ -505,8 +488,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="vQp-dN-5f0"/>
-        <segue reference="lsy-6y-j5w"/>
-    </inferredMetricsTieBreakers>
 </document>

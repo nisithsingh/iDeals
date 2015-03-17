@@ -1,3 +1,5 @@
+PPT : https://docs.google.com/document/d/1xXUSQvV50QTLqUiFil3LbfENZvKLi8GGVI-xyu36j9Y/edit?pli=1
+
 iDeals
 ======
 

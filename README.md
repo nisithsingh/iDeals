@@ -1,4 +1,4 @@
-PPT : https://docs.google.com/document/d/1xXUSQvV50QTLqUiFil3LbfENZvKLi8GGVI-xyu36j9Y/edit?pli=1
+Document : https://drive.google.com/file/d/0B8fwrlqFJyMYMGY4cE9Wd0k5aE0/view?usp=sharing
 
 iDeals
 ======
